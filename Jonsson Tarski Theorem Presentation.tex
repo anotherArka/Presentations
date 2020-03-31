@@ -53,14 +53,14 @@
 
 \begin{document}
 
-\begin{frame}\label{frame:titlepage}
+\begin{frame}\label{frame: titlepage}
 \titlepage
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}\label{frame:modal similarity type}
-\begin{definition}[Modal similarity type]\label{defn:modal similarity type}
+\begin{frame}\label{frame: modal similarity type}
+\begin{definition}[Modal similarity type]\label{defn: modal similarity type}
 A modal similarity type $\tau$ is a pair $(O,\rho)$ where $O$ is a non-empty set, 
 and $\rho$ is a function $O\to\mathbb{N}$. An element $\Delta \in O$ is called a modal
 operator of arity $\rho(\Delta)$.
@@ -69,8 +69,8 @@ operator of arity $\rho(\Delta)$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}\label{frame:boolean algebra}
-\begin{definition}[Boolean algebra]\label{defn:boolean algebra}
+\begin{frame}\label{frame: boolean algebra}
+\begin{definition}[Boolean algebra]\label{defn: boolean algebra}
 Let $A$ be a non-empty set, $0 \in A$, $+$ be a binary operator and $-$ be an unary operator
 on $A$. Define $1 := 0$ and let $x\cdot y$ be the abbreviation for $-((-x)+(-y))$.\smallskip
 
@@ -78,22 +78,22 @@ $\mathcal{K} = (A,+,-,0)$ is a called a boolean algebra if the following hold
 for $x, y, z \in A$:
 \begin{multicols}{2}
 \begin{enumerate}
-\item[$\triangleright$] $-(-x) = x$
-\item[$\triangleright$] $x + 0 = x$
-\item[$\triangleright$] $x + 1 = 1$
-\item[$\triangleright$] $x + x = x$
-\item[$\triangleright$] $x + (y + z) = (x + y) + z$
-\item[$\triangleright$] $x + y = y + x$
-\item[$\triangleright$] $x + (-x) = 1$
-\item[$\triangleright$] $x + (y\cdot z) = (x + y) \cdot (x + z)$
+\item[$\blacktriangleright$] $-(-x) = x$
+\item[$\blacktriangleright$] $x + 0 = x$
+\item[$\blacktriangleright$] $x + 1 = 1$
+\item[$\blacktriangleright$] $x + x = x$
+\item[$\blacktriangleright$] $x + (y + z) = (x + y) + z$
+\item[$\blacktriangleright$] $x + y = y + x$
+\item[$\blacktriangleright$] $x + (-x) = 1$
+\item[$\blacktriangleright$] $x + (y\cdot z) = (x + y) \cdot (x + z)$
 \item[]
-\item[$\triangleright$] $x \cdot 0 = 0$
-\item[$\triangleright$] $x \cdot 1 = x$
-\item[$\triangleright$] $x \cdot x = x$
-\item[$\triangleright$] $x \cdot (y \cdot z) = (x \cdot y) \cdot z$
-\item[$\triangleright$] $x \cdot y = y \cdot x$
-\item[$\triangleright$] $x \cdot (-x) = 1$
-\item[$\triangleright$] $x \cdot (y + z) = (x \cdot y) + (x \cdot z)$
+\item[$\blacktriangleright$] $x \cdot 0 = 0$
+\item[$\blacktriangleright$] $x \cdot 1 = x$
+\item[$\blacktriangleright$] $x \cdot x = x$
+\item[$\blacktriangleright$] $x \cdot (y \cdot z) = (x \cdot y) \cdot z$
+\item[$\blacktriangleright$] $x \cdot y = y \cdot x$
+\item[$\blacktriangleright$] $x \cdot (-x) = 1$
+\item[$\blacktriangleright$] $x \cdot (y + z) = (x \cdot y) + (x \cdot z)$
 \end{enumerate}
 \end{multicols}
 \end{definition}
@@ -101,20 +101,56 @@ for $x, y, z \in A$:
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\begin{frame}\label{frame: boolean algebra with operators}
+
+\visible<1->{
+\begin{block}{Axioms for the normal modal logic $\mathbf{K}$}
+$\Diamond \bot \longleftrightarrow \bot$\\
+$\Diamond (p \vee q) = \Diamond p \vee \Diamond q$
+\end{block}
+}
+
+\visible<2->{
+\begin{definition}[Boolean algebra with operators]
+Let $\tau = (O, \rho)$ be a modal similarity type. Then
+$\mathcal{J} = (A, +, -, 0, f_{\Delta})_{\Delta \in \tau}$ is called a boolean algebra
+with operators if the following holds:
+
+\begin{enumerate}
+\item[$\blacktriangleright$] $(A,+,-,0)$ is a boolean algebra.
+
+\item[$\blacktriangleright$] For $\Delta \in O$, $f_{\Delta}$ 
+is an operator of arity $\rho(\Delta)$.
+
+\item[$\blacktriangleright$] (Normality) $f_{\Delta}(a_1,\dots,a_{\rho (\Delta)}) = 0$ 
+if $a_i = 0$ for some $i$.
+
+\item[$\blacktriangleright$] (Additivity) For all $i$,
+$f_{\Delta}(a_1,\dots,a_i + a_i',\dots,a_n) = $
+$$f_{\Delta}(a_1,\dots,a_i,\dots,a_n) + 
+  f_{\Delta}(a_1,\dots,a_i',\dots,a_n) $$
+}
+  
+\end{enumerate}
+\end{definition}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{frame}\label{frame: filters and ultrafilters}
 
-\begin{definition}[Filter]\label{defn:filter}
+\begin{definition}[Filter]\label{defn: filter}
 Given a boolean algebra $\mathcal{K} = (A,+,-,0)$, $F\subseteq A$ is called a filter if:
 \begin{enumerate}
-\item[$\triangleright$] $1 \in F$,
-\item[$\triangleright$] If $a,b \in F$ then $a \cdot b \in F$,
-\item[$\triangleright$] If $a \in F$ and $a \leq b$ then $b \in F$.
+\item[$\blacktriangleright$] $1 \in F$,
+\item[$\blacktriangleright$] If $a,b \in F$ then $a \cdot b \in F$,
+\item[$\blacktriangleright$] If $a \in F$ and $a \leq b$ then $b \in F$.
 \end{enumerate}
 $F$ is called proper if $0 \notin F$, or, equivalently, if $F$ is a strict subset of $A$.
 \end{definition}
 
 \visible<2->{
-\begin{definition}[Ultrafilter]\label{defn:ultrafilter}
+\begin{definition}[Ultrafilter]\label{defn: ultrafilter}
 A filter $F$ is called an ultrafilter if for every $a \in A$, either $a$ or $-a$ 
 belongs to $F$. We will denote the collection of ultrafilters of $\mathcal{K}$ as
 $\mathbb{UF}(\mathcal{K})$. 
@@ -123,16 +159,16 @@ $\mathbb{UF}(\mathcal{K})$.
 
 \end{frame}
 
-\begin{frame}\label{frame:examples of filters}
-
+\begin{frame}\label{frame: examples of filters}
+\frametitle{Examples of filters}
 \visible<1->{
-\begin{example}\label{example:filter generated by an element}
+\begin{example}\label{example: filter generated by an element}
 Given $a \in A$, the set $a\uparrow := \{b \in A\ |\ a \leq b\}$ is a filter.
 \end{example}
 }
 
 \visible<2->{
-\begin{example}\label{example:filter generated by a subset}
+\begin{example}\label{example: filter generated by a subset}
 Given $D \subseteq A$ the filter generated by $D$ is defined as, 
  $$F_D := \{a \in A\ |\ \exists d_0,\dots,d_n \in D \text{ s.t. } 
    d_0\cdot \dots \cdot d_n \leq a \}.$$
@@ -144,17 +180,17 @@ This is also the smallest filter containing $D$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}\label{frame:finite meet property}
+\begin{frame}\label{frame: finite meet property}
 
 \visible<1->{
-\begin{definition}[Finite meet property]\label{defn:finite meet property}
+\begin{definition}[Finite meet property]\label{defn: finite meet property}
 $D \subseteq A$ is said to have finite meet property if there is no finite subset 
 $\{d_0,\dots,d_n\}$ of $D$ such that $d_0\cdot \dots \cdot d_n = 0$. 
 \end{definition}
 }
 
 \visible<2->{
-\begin{lemma}\label{lemma:when generated filter is proper}
+\begin{lemma}\label{lemma: when generated filter is proper}
 Given $D \subseteq A$, $F_D$ is proper if and only if $D$ has the finite meet property
 \end{lemma}
 }
@@ -163,18 +199,27 @@ Given $D \subseteq A$, $F_D$ is proper if and only if $D$ has the finite meet pr
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}\label{frame:prp of ultrafilters}
+\begin{frame}\label{frame: prp of ultrafilters}
+
+\frametitle{Properties of ultrafilters}
 
 \visible<1->{
-\begin{lemma}\label{lemma:ultrafilters are prime wrt +}
+\begin{lemma}\label{lemma: ultrafilters are prime wrt +}
 For and ultrafilter $F$, $a + b \in F$ iff $a \in F$ or $b \in F$.
 \end{lemma}
 }
 
 \visible<2->{
-\begin{theorem}\label{thm:ultrafilters are maximal}
+\begin{theorem}\label{thm: ultrafilters are maximal}
 Ultrafilters are also maximal filters. That is, if $F$ is an ultrafilter and $L$ is a proper
 filter such that $F \subseteq L$ then $F = L$.
+\end{theorem}
+}
+
+\visible<3->{
+\begin{theorem}[Ultrafilter theorem]\label{thm: ultrafilter theorem}
+Let $a \in A$, and $F$ is a proper filter of $A$, such that $a \notin F$. Then there is a
+ultrafilter $L$, such that $F \subseteq L$ and $a \notin F$.
 \end{theorem}
 }
 
