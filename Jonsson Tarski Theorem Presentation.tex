@@ -1,0 +1,126 @@
+\documentclass[10pt]{beamer}
+\usepackage{listings}
+%\usetheme{Boadilla}
+%\usecolortheme{beaver}
+
+\usepackage[T1]{fontenc}
+\usepackage{multicol}
+\usepackage[latin9]{inputenc}
+\usepackage{graphicx}
+\usepackage{array}
+%\usepackage{enumitem}
+\usepackage{amsthm,amsmath,latexsym,amssymb,amsmath}
+\usepackage{mathrsfs,graphicx,xargs,etoolbox}
+
+
+\DeclareOptionBeamer{compress}{\beamer@compresstrue}
+\ProcessOptionsBeamer
+
+\mode<presentation>
+
+\useoutertheme[footline=authortitle]{miniframes}
+\useinnertheme{circles}
+\usecolortheme{whale}
+\usecolortheme{orchid}
+
+\definecolor{beamer@blendedblue}{rgb}{0.137,0.466,0.741}
+
+\setbeamercolor{structure}{fg=beamer@blendedblue}
+\setbeamercolor{titlelike}{parent=structure}
+\setbeamercolor{frametitle}{fg=black}
+\setbeamercolor{title}{fg=black}
+\setbeamercolor{item}{fg=black}
+
+\mode
+<all>
+
+%commands
+\newcommand{\U}{\mathscr{U}}
+\newcommand{\R}{\mathbb{R}}
+
+\theoremstyle{definition}
+\newtheorem{question}{Question}[section]
+
+\theoremstyle{definition}
+\newtheorem{answer}{Answer}[section]
+
+
+\setbeamercovered{invisible}
+
+\title{J\' onsson\,-Tarski Theorem}
+\author{Arka Ghosh}
+\date{}
+
+\begin{document}
+
+\begin{frame}\label{frame:titlepage}
+\titlepage
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}\label{frame:modal similarity type}
+\begin{definition}[Modal similarity type]\label{defn:modal similarity type}
+A modal similarity type $\tau$ is a pair $(O,\rho)$ where $O$ is a non-empty set, 
+and $\rho$ is a function $O\to\mathbb{N}$. An element $\Delta \in O$ is called a modal
+operator of arity $\rho(\Delta)$.
+\end{definition}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}\label{frame:boolean algebra}
+\begin{definition}[Boolean algebra]\label{defn:boolean algebra}
+Let $A$ be a non-empty set, $0 \in A$, $+$ be a binary operator and $-$ be an unary operator
+on $A$. Define $1 := 0$ and let $x\cdot y$ be the abbreviation for $-((-x)+(-y))$.\smallskip
+
+$\mathcal{K} = (A,+,-,0)$ is a called a boolean algebra if the following hold
+for $x, y, z \in A$:
+\begin{multicols}{2}
+\begin{enumerate}
+\item[$\triangleright$] $-(-x) = x$
+\item[$\triangleright$] $x + 0 = x$
+\item[$\triangleright$] $x + 1 = 1$
+\item[$\triangleright$] $x + x = x$
+\item[$\triangleright$] $x + (y + z) = (x + y) + z$
+\item[$\triangleright$] $x + y = y + x$
+\item[$\triangleright$] $x + (-x) = 1$
+\item[$\triangleright$] $x + (y\cdot z) = (x + y) \cdot (x + z)$
+\item[]
+\item[$\triangleright$] $x \cdot 0 = 0$
+\item[$\triangleright$] $x \cdot 1 = x$
+\item[$\triangleright$] $x \cdot x = x$
+\item[$\triangleright$] $x \cdot (y \cdot z) = (x \cdot y) \cdot z$
+\item[$\triangleright$] $x \cdot y = y \cdot x$
+\item[$\triangleright$] $x \cdot (-x) = 1$
+\item[$\triangleright$] $x \cdot (y + z) = (x \cdot y) + (x \cdot z)$
+\end{enumerate}
+\end{multicols}
+\end{definition}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}\label{frame: filters and ultrafilters}
+
+\begin{definition}[Filter]
+Given a boolean algebra $\mathcal{K} = (A,+,-,0)$, $F\subseteq A$ is called a filter if:
+\begin{enumerate}
+\item[$\triangleright$] $1 \in F$,
+\item[$\triangleright$] If $a,b \in F$ then $a \cdot b \in F$,
+\item[$\triangleright$] If $a \in F$ and $a \leq b$ then $b \in F$.
+\end{enumerate}
+$F$ is called proper if $0 \notin F$, or, equivalently, if $F$ is a strict subset of $A$.
+\end{definition}
+
+\visible<2->{
+\begin{definition}[Ultrafilter]
+A filter $F$ is called an ultrafilter if for every $a \in A$, either $a$ or $-a$ 
+belongs to $F$. We will denote the collection of ultrafilters of $\mathcal{K}$ as
+$\mathbb{UF}(\mathcal{K})$. 
+\end{definition}
+}
+
+\end{frame}
+
+\end{document}
