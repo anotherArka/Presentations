@@ -1,0 +1,464 @@
+\documentclass[10pt]{beamer}
+\usepackage{listings}
+\usetheme{Boadilla}
+\usecolortheme{beaver}
+
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{graphicx}
+\usepackage{array}
+%\usepackage{enumitem}
+\usepackage{amsthm,amsmath,latexsym,amssymb,amsmath}
+\usepackage{mathrsfs,graphicx,xargs,etoolbox}
+
+\title{Understanding Universes and Univalence}
+\author{Arka Ghosh}
+\institute{Guided by - Prof. Siddhartha Gadgil }
+\date{}
+
+%commands
+\newcommand{\U}{\mathscr{U}}
+\newcommand{\R}{\mathbb{R}}
+
+\theoremstyle{definition}
+\newtheorem{question}{Question}[section]
+
+\theoremstyle{definition}
+\newtheorem{answer}{Answer}[section]
+
+
+\setbeamercovered{invisible}
+
+\begin{document}
+
+\begin{frame}\label{titlepage}
+\titlepage
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Introduction}\label{intro}
+
+\visible<1->{
+\begin{block}{}
+A \emph{formal deduction system} consists of
+
+\begin{itemize}
+\item rules for forming valid expressions, and
+\item rules of deduction. 
+\end{itemize}
+
+\end{block}
+}
+
+\visible<2->{
+\begin{block}{}
+\begin{itemize}
+\visible<2->{
+\item The usual formal deduction system for mathematics is first-order logic (fol). 
+}\visible<3->{
+\item A theory such as ZFC is a formal deduction system together with axioms.
+}\visible<4->{
+\item Type theory is a richer formal deduction system than fol where axioms are replaced
+      with rules.
+\end{itemize}
+}
+\end{block}
+}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{}\label{type theory}
+
+\visible<1->{
+\begin{block}{}
+Basic objects of type theory are terms/elements and types.
+\end{block}
+}
+
+\visible<2->{
+\begin{block}{}
+Type theory has two basic forms of judgment/statements:
+\begin{itemize}
+\item $a : A$ ($a$ is a term of type $A$).
+\item $a \equiv b : A$ ($a$ and $b$ are definitionally equal terms in type $A$).
+\end{itemize}
+\end{block}
+}
+
+\visible<3->{
+\begin{block}{Some Predefined Types}
+\begin{itemize}
+\item The \emph{empty type} $\mathbf{0}$.
+\item The \emph{unit type} $\mathbf{1}$ with $\star : \mathbf{1}$.
+\item The \emph{boolean type} $\mathbf{2}$ with $0_{\mathbf{2}}, 1_{\mathbf{2}} : \mathbf{2} $.
+\end{itemize}
+
+\end{block}
+}
+
+\visible<4->{
+\begin{block}{Some Type Forming Rules}
+Given types $A$ and $B$ we can form:
+\begin{itemize}
+\item The \emph{function type} $A \to B$.
+\item The \emph{product type} $A \times B$.
+\item The \emph{co-product type} $A + B$.
+\end{itemize}
+\end{block}
+}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Dependent Types}\label{dependent types}
+
+\visible<1->{
+\begin{block}{}
+In dependent type theory
+\begin{itemize}
+\item Types can depend on terms.
+\item Types can be terms themselves.
+\end{itemize}
+\end{block}
+}
+
+\visible<2->{
+\begin{block}{Universes and Type Family}
+As types are terms we need types of types. These special types
+whose terms are types are called \emph{universes}.\smallskip
+
+Given a type $A$ and universe $\U$ a function $f : A \to \U$ is called a \emph{type family}.
+\end{block}
+}
+
+\visible<3->{
+\begin{block}{Dependent Types}
+Given a type family $P : A \to \U $ we can form:
+\begin{itemize}
+\item The \emph{dependent function type} $\prod_{a : A} P(a)$.
+\item The \emph{depedent pair type} $\sum_{a : A} P(a)$.
+\end{itemize}
+
+\end{block}
+}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{An example to give the intuition}\label{example}
+
+\begin{itemize}
+
+\item Consider $S^2 \subseteq \R^3$ as a type, i.e., the terms of this type are points 
+      in $S^2$.
+      
+\item We associate to $p \in S^2$ the type whose terms are tangent vectors at $p$. Then this
+      is a type family.
+      
+\item $\prod$-type corresponds to vector fields (sections).
+
+\item $\sum$-type corresponds to the union of the tangent spaces (i.e. total space).           
+
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Proposition as Types}\label{prop as types}
+
+\begin{block}{}
+A proposition can be considered as a type $A$ with 
+the witnesses/proofs as its terms. So to prove a proposition $A$ we need to show that 
+there is a term $a : A$.
+\end{block}
+
+\begin{block}
+
+\begin{table}
+\caption{Correspondence between logical and type theoritic operations}
+\begin{tabular}{ c | c }
+
+\hline
+English & Type Theory \\ 
+\hline
+ 
+True & $\mathbf{1}$ \\
+
+False & $\mathbf{0}$ \\
+
+$A$ and $B$ & $A \times B$ \\
+
+$A$ or $B$ & $A + B$ \\
+
+$A$ implies $B$ & $A \to B$ \\
+
+Not $A$ & $A \to \mathbf{0}$ \\
+
+For all $a\in A$, $P(a)$ holds & $ \prod_{a : A} P(a)$ \\ 
+
+There exists $a\in A$ such that $P(a)$ holds & $\sum_{a : A} P(a)$ \\
+
+\end{tabular}
+
+\end{table}
+
+
+\end{block}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Universes and Paradoxes in Set Theory}\label{uni and para}
+
+\visible<1->{
+\begin{block}{}
+The existence of an \emph{universe} in set theory, i.e., \emph{set of all sets} leads to
+classical paradoxes due to Cantor, Russell, Burali-Forti. 
+\end{block}
+}
+
+\visible<2->{
+\begin{block}{Burali-Forti Paradox}
+
+\begin{itemize}
+\item Consider \emph{ordinals} to be sets with an irreflexive well-ordering (like $<$).
+
+\item Then existence of an universal set implies existence of the collection of all 
+      ordinals equal upto order-preserving bijections. Call this collection $Ord$.
+
+\item Order preserving strict inclusions induces an irreflexive well-order $<_o$ on $Ord$.
+
+\item Then $(Ord,<_o) \in Ord$ and $A <_o Ord$ for all ordinals $A$. This leads to a        
+      contradiction as $<_o$ is irreflexive.      
+\end{itemize}
+
+\end{block}
+}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+
+\visible<1->{
+\begin{block}{}
+This proof can be formulated in type theory to arrive at a contradiction starting from the
+rule $\U : \U$ (or even for a finite number of universes). 
+Difficulties arise in formulation because
+\begin{itemize}
+\item unlike sets types have a higher structure,
+\item we do not have excluded middle.
+\end{itemize}
+\end{block}
+}
+
+\visible<2->{
+\begin{block}{}
+So we must have an infinite sequence of universes 
+
+\[ \U_0 : \U_1 : \U_2 ...\]
+\end{block}
+}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Vector Bundles}\label{vec bun}
+
+\visible<1->{
+\begin{definition} 
+A vector bundle of dimension $k$ over $F$ ($\mathbb{R}$ or $\mathbb{C}$) is a 
+bundle $p : E \to B$ where inverse image of each $b \in B$ has a $k$-dimensional
+vector space structure over $F$ and the bundle is locally trivial.
+\end{definition}
+}
+
+\visible<2->{
+\begin{example}
+Two examples of vector bundles over $S^1$ are the line bundles corresponding to 
+the cylinder and m\"obius strip. 
+\end{example}
+}
+
+\visible<3->{
+\begin{question}
+
+\begin{itemize}
+\item Are these the only line bundles over $S^1$? \\
+\item More generally, can we classify $k$-dimensional vector bundles over a space?
+\end{itemize}
+
+\end{question}
+}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Universal Bundles}\label{uni bun}
+
+\begin{answer}
+For each $k$ there is a classifying space $B_k$ for vector bundles. 
+That is, given a space $X$ there is a bijective correspondence between
+vector bundles over $X$ and homotopy classes of maps $X \to B_k$.
+\end{answer}
+
+\begin{example}
+For line bundles the classifying space is $\R P^{\infty}$.
+\end{example}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Homotopy Type Theory}\label{hott}
+
+\visible<1->{
+\begin{block}{}
+
+\begin{itemize}
+\item In homotopy type theory (HOTT) types are interpreted as spaces.
+      This way each statement in HOTT gets a topological interpretation.
+\item $A\to B$ is interpreted as the space of continuous functions.
+\item $A \times B$ is interpreted as the product space. 
+\end{itemize}
+      
+\end{block}
+}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+
+\visible<1->{
+\begin{block}{Equality Types}
+
+\begin{itemize}
+
+\item The proposition that two terms of the same type $a, b : A$ are equal 
+      is considered as a type $a =_A b$. 
+\item It is a so called \emph{indexed inductive type} freely generated by 
+      \[{refl} :\prod_{a : A} a =_A a \].
+\end{itemize}
+
+\end{block}
+}
+
+\visible<2->{ 
+\begin{block}{}
+
+\begin{itemize}
+
+\item Topologically $a =_A b$ can be interpreted as the space of paths from $a$ to $b$.
+\item Then ${refl}$ can be considered as the subspace of constant paths/loops. 
+\item The rule that equality types are generated by reflexivity reflects the fact 
+      that the path-space deformation retracts to the subspace of constant loops.
+
+\end{itemize}
+
+\end{block}
+}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Type Families are Fibrations}
+
+\begin{block}{}
+
+\begin{itemize}
+\visible<1->{
+\item Any type family $P : A \to \U$ can be considered as a fibration 
+      ${ {pr}_1 : \sum_{a : A} P(a) \to A }$, where ${pr}_1$ is projection onto the first
+      co-ordinate.
+}\visible<2->{      
+\item This fibration satisfies \emph{path lifting property} automatically.
+}\visible<3->{ 
+\item In this interpretation functions $f : \prod_{a : A} P(a)$ become sections.
+}\visible<4->{
+\item A path $p : a =_A b$ induces a fibre transport $p_* : P(a) \to P(b)$. 
+     We can even prove that the fibres are equivalent (with a proper notion of equivalence).
+}\visible<5->{
+\item So we automatically have \textbf{equivalences arising from equalities.}
+}
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+\begin{frame}{Univalence Axiom}
+
+
+
+\begin{block}{}
+\begin{itemize}
+\visible<1->{
+\item We can define equivalence ($\simeq$) as functions with \emph{inverses}.
+}\visible<2->{
+\item Considering types as points in the universe equality gives an equivalence. That is
+      we have $(A =_{\U} B) \to (A\simeq B)$.
+}\visible<3->{
+\item Univalence axiom due to Voevodsky says that this itself is an equivalence. That is,
+      $(A =_{\U} B) \simeq (A\simeq B)$.      
+}      
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+
+\begin{block}{Recall}
+Due to Burali-Forti paradox in type theory there can not be a single \emph{universe}. So
+we have an infinte sequence of univereses 
+
+\[ \U_0 : \U_1 : \U_2 ...\]
+\end{block}
+
+\begin{block}{}
+\begin{itemize}
+\item None of these universes can be \emph{versal} (due to paradoxes).
+\item But each of these universes can be taken to be \emph{univalent} (due to the axiom).
+\item That is, in these universes \textbf{isomorphic structures are equal.}
+\end{itemize}
+\end{block}
+
+
+
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{References}
+
+\begin{thebibliography}{99}
+
+\bibitem{Hott}
+Homotopy Type Theory: Univalent Foundations of Mathematics.
+
+\bibitem{Manin}
+A Course in Mathematical Logic for Mathematicians: Yu. I. Manin. 
+
+\bibitem{Husemoller}
+Fibre Bundles: Dale Husemoller.
+
+
+\end{thebibliography}
+\end{frame}
+
+\end{document}

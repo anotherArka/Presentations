@@ -1,0 +1,495 @@
+\documentclass{beamer}
+\usetheme{Boadilla}
+
+\newcommand{\N}{\mathbb{N}}
+
+\title{Semilinear Sets and Context Free Languages}
+\author{Arka Ghosh  Vishnu Teja}
+\date{}
+
+\begin{document}
+
+\begin{frame}\label{titlepage}
+\titlepage
+\end{frame}
+
+\begin{frame}\label{references}
+\begin{enumerate}
+\item \textit{Semigroups, Presburger Formulas, and Languages - Seymour Ginsburg and Edwin H. Spanier (Pacific Journal of 
+                     Mathematics, Vol.16, No.2, 1966)}
+\item \textit{Bounded Algol-Like Languages - Seymour Ginsburg and Edwin H. Spanier.}
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+
+\begin{definition}
+Given $C,P\subseteq \N$ define $L(C;P)$ as,
+$L(C;P) =$ 
+\[
+\{  x = x_0 + x_1 + \dots + x_m \text{ , where $x_0 \in C$ and $\{x_1,\dots ,x_m\} \subseteq P$ 
+is finite} \}.
+\]
+Notice that $\{x_1,\dots,x_m\}$ can be empty also.
+\end{definition}
+
+\begin{block}{Notation}
+If $C = \{c\}$ we will write $L(c;P)$ instead of $L(\{c\};P)$. Similarly if $P = \{p_1,\dots,p_r\}$ 
+we will write $L(c;p_1,\dots,p_r)$.
+\end{block}
+
+\begin{definition}\label{defn : linear}
+A subset $L$ of $\N ^n$ is called \textbf{linear} if there exists $c \in \N ^n$ and finite subset $P \subset \N ^n$ such that
+\[ L = L(c;P).\]
+\end{definition}
+
+\end{frame}
+
+\begin{frame}
+
+\begin{definition}\label{defn : semilinear}
+A \textbf{semilinear} subset of $\N ^n$ is a finite union of linear subsets.
+\end{definition}
+
+\begin{example}
+$A = \{ (x,y) | x\geq 1\} \subseteq \N ^2$ is linear as $A = L((1,0);(1,0),(0,1))$. 
+\end{example}
+
+\begin{example}
+$X = \{(x,y) | y\leq x^2 \}$ is not semilinear.
+\end{example}
+
+\end{frame}
+
+\begin{frame}
+
+\begin{theorem}[1.1]\label{thm : semi sub are closed under}
+The family of semilinear sets of $\N ^n$ is closed with respect to 
+\begin{enumerate}
+\item finite union, 
+\item finite intersection, and 
+\item complementation. 
+\end{enumerate}
+
+Also the projection of a semilinear set is semilinear.
+\end{theorem}
+
+\end{frame}
+
+\begin{frame}
+
+\begin{theorem}[1.2]\label{thm : Presburger sentences are decidable}
+It is decidable whether an arbitrary Presburger sentence is true.
+\end{theorem}
+
+\begin{definition}\label{defn : Presburger set}
+$A \subseteq \N ^n$ is a \textbf{Presburger set} if 
+\[ A = \{ (x_1,\dots,x_n) | P(x_1,\dots,x_n) \} \]
+for some Presburger formula $P(x_1,\dots,x_n)$.
+\end{definition}
+
+\begin{block}{Remark}
+The family of Presburger sets are closed under
+\begin{enumerate}
+\item finite union,
+\item finite intersection,
+\item complementation, and
+\item projection.
+\end{enumerate}
+\end{block}
+
+\end{frame}
+
+\begin{frame}
+
+\begin{theorem}[1.3]\label{thm 1.3}
+The family of Presburger sets of $\N ^n$ is identical with the family of semilinear sets of $\N ^n$. Furthermore, each
+description is effectively calculable from each other.
+\end{theorem}
+
+\end{frame}
+
+\begin{frame}
+
+\begin{definition}\label{defn:Parikh mapping}
+Let $a_1,\dots,a_n$ be distinct letters in some alphabet $A$. The \textbf{Parikh Mapping} 
+$\tau : a_1^* \dots a_n^* \to \N ^n$ is defined as,
+\[ \tau (a_1 ^{i_1}\dots a_n^{i_n}) = (i_1,\dots,i_n) \] 
+\end{definition}
+
+\begin{theorem}\label{thm:Parikh,1961}
+[Parikh, 1961] If $Z\subseteq a_1^* \dots a_n^*$ is a (context free) language then $\tau(Z)$ is a semilinear subset
+of $\N ^n$.
+\end{theorem}
+
+\begin{block}{Note}
+From now on when we say language we will mean context-free language if not mentioned otherwise.
+\end{block}
+
+\end{frame}
+
+\begin{frame}
+
+\begin{definition}\label{defn:Parikh vector}
+Let $\Sigma =\{a_{1},\dots ,a_{k}\}$ be an alphabet. The Parikh vector of a word is defined as the function 
+$ p:\Sigma ^* \to \N^k $, given by
+
+\[ p(w)=(|w|_{a_1},\dots ,|w|_{a_k}),\] 
+where $|w|_{a_i}$ denotes the number of occurrences of the letter $a_i$ in $w$.
+\end{definition}
+
+\begin{theorem}\label{thm:Parikh,1966}
+[Parikh, 1966]  Let $L$ be a context-free language. Let $P(L)$ be the set of Parikh vectors of words in $L$, 
+that is, $P(L)=\{p(w)| w \in L\}.$ Then $P(L)$ is a semi-linear set.
+\end{theorem}
+
+\end{frame}
+
+\begin{frame}
+
+\only<1>{
+\begin{definition}\label{defn:stratified}
+A subset $X$ of $\N ^n$ is said to be \textbf{stratified} if the following holds:
+\begin{enumerate}
+\item Each element in $X$ has at most two non-zero co-ordinates.
+\item There are no integers $i,j,k,m$ with $1 \leq i < j < k < m \leq n$ such that there exists $x = (x_1,\dots, x_n)$ and
+         $x = (x_1',\dots, x_n')$ in $X$ such that $x_i x_j' x_k x_m' \neq 0$.
+\end{enumerate}
+\end{definition}
+}
+
+\only<1->{
+\begin{lemma}[2.1]\label{lemma 2.1}
+If $Z\subseteq a_1^*\dots a_n^*$ is a (context-free) language, then $\tau(Z)$ can be represented as a finite union of linear sets each of
+which has a stratified set of periods.
+\end{lemma}
+}
+
+\only<2->{
+\begin{proof}
+}
+\only<2->{
+\begin{enumerate}
+}
+\only<2-3>{
+\item We will induct on $n$. The result is clearly true for $n = 1,2$ as every subset is stratified.
+}
+\only<3>{
+\item Let $n\geq 3$ and the result is true for $n-1$. Lemma 2.5 of \cite{prereq} says that every (context free) language 
+          $L\subset  a_1^*\dots a_n^*$ is a finite union of the sets of the form 
+          \[ L(D,E,F) = \{a_1^i uv a_n^j | \ a_1^i a_n^j\in D, \ u\in E, \ v\in F \}, \]
+          where $D,E$ and $F$ are languages in $a_1^* a_n^*$, $a_1^*\dots a_q^*$ and $a_q^*\dots a_n^*$ respectively.
+}
+
+\only<4-5>{
+\item Let $\tau ':a_1^* \dots a_q^* \to \N^q$ and $\tau '':a_q^* \dots a_n^* \to \N^{n-q+1}$ be the appropiate 
+        Parikh mappings. Let $\mu : a_1^* a_n^* \to \N^n$ be defined as:
+        \[ \mu(a_1^i a_n^j) = (i,0,\dots,0,j). \]
+        Using the induction hypothesis $\tau'(E)$ is finite union of sets of the form $L(c' ; P')$ where $c' \in \N^q$ and $P'$ is a
+        stratified subset of $\N ^q$. Also $\tau''(F)$ ... $L(c'' ; P'')$ ... $c'' \in \N^{n-q+1}$ ... $P''$ ... $\N^{n-q+1}$.
+}
+\only<5>{
+\item $D$ is a CFL. Hence $\mu(D)$ is semilinear. So $\mu(D)$ is a finite union of the sets of the type $L(c,P)$ where 
+          $c\in \N^n$, $P\subseteq \N^n$ is finite, and if $i \neq 1,n$ then $i$-th co-ordinate of $c$ and $P$ is $0$.
+}
+
+\only<6>{
+\item So $\tau(L(D,E,F))$ is a finite union of the sets of the form,
+\[ L((c'\times 0^{n-q}+(0^{q-1}\times c'') + c ; (P' \times 0^{n-q})\cup (0^{q-1} \times P'') \cup P), \]
+where $c,c',c'',P,P',P''$ are like in the previous paragraphs. $P,P',P''$ are stratified, this implies  
+$(P' \times 0^{n-q})\cup (0^{q-1} \times P'') \cup P$ is also stratified.
+
+}
+\only<2->{
+\end{enumerate}
+\end{proof}
+}
+
+
+\end{frame}
+
+\begin{frame}
+\only<1->{
+\begin{lemma}[2.2]\label{lemma 2.2}
+If $L\subseteq \N^n$ is a finite union of linear sets each of which has a stratified set of periods, then $\tau^{-1}(L)$ is a 
+(context free) language.
+\end{lemma}
+}
+
+\only<2->{
+\begin{proof}
+}
+
+\only<2->{
+\begin{enumerate}
+}
+
+\only<2-4>{
+\item It is sufficient to prove for $L = L(c;P)$. As $f^{-1}(\cup L_i) = \cup f^{-1}(L_i)$.
+}
+
+\only<3-5>{
+\item We will induct on $n$. For $n = 1,2$ each subset of $\N ^n$ is stratified. The lemma follows from corollary to lemma
+          2.2 in \cite{prereq}.
+}
+
+\only<4-5>{
+Say $n\geq 3$. We will now induct on the no. of elements in $P$. If $P = \phi$ then $\tau^{-1}(L(c;\phi))$ is a singleton and 
+hence a CFL. Say $P\neq \phi$. Then there can be two cases:\smallskip
+}
+
+\only<4>{
+There exists a $p\in P$ such that $p = (p_1,\dots,p_n)$ has all co-ordinates zero except the first and last one. 
+Let $P' = P\setminus \{p\}$. Using induction hypothesis let $G' = (V', \Sigma, Q', \sigma')$ such that 
+$L(G') = \tau^{-1}(L(c;P'))$. Now define $G = (V,\Sigma,Q,\sigma)$, where $\sigma$ is a symbol not in $V'$, 
+$V = V'\cup\{\sigma\}$, $Q = Q'\cup\{\sigma \to \sigma', \sigma \to a_1^{p_1}\sigma a_n^{p_n}\}.$ Clearly 
+$L(G) = \tau^{-1}(L(c;P))$.
+}
+
+\only<5>{
+For all elements in $P$ at most one of the first and last co-ordinate is non-zero. Let 
+\[ q = max\{sup_j \{\exists p \in P \text{ such that $p_1 \neq 0$ and $p_j \neq 0$}\},2\} .\] 
+So $ L(c;P) = L(c';P')\times 0^{n-q} + 0^{n-q+1} \times L(c'';P'') $, where $c'\in \N^q$, $c''\in \N^{n-q+1}$, $P'\subseteq \N^q$,
+$P''\subseteq \N^{n-q+1}$. So now $\tau^{-1}(L(c;P)) = [{\tau'}^{-1} (L(c';P'))] [ {\tau''}^{-1} (L(c'';P'')) ] $
+}
+
+\only<2->{
+\end{enumerate}
+}
+
+
+
+\only<2->{
+\end{proof}
+}
+
+\end{frame}
+
+\begin{frame}
+
+\begin{theorem}[2.1]\label{thm 2.1}
+Given a subset $L$ of $\N^n$, $\tau ^{-1}(L)$ is a (context-free) language if and only if $L$ can be represented as a finite union of linear
+sets each having a stratified set of periods.
+\end{theorem}
+
+\begin{block}
+{Note} Till now we do not have any procedure to decide whether a given semilinear subset $L$ of $\N ^n$ satisfies the 
+condition of the last theorem because a semilinear set can have multiple representations.
+\end{block}
+
+\end{frame}
+
+\begin{frame}
+
+\only<1->{
+\begin{lemma}[2.3]\label{lemma 2.3}
+Let $M = L(c_1;P_1)\cup \dots \cup L(c_r;P_r)$ be a semilinear subset of $\N ^n$ and let $L(c;p)$ be a linear subset of 
+$\N ^n$, with one period, which meets $M$ infinitely often. Then there exists $1\leq i \leq n$ and a positive integer $k$
+such that $kp$ is a sum of positive multiples of some elements of $P_i$.
+\end{lemma}
+}
+
+\only<2->{
+\begin{proof}
+
+\begin{enumerate}
+}
+
+\only<2->{
+\item There exists an $i$ such that $L(c;P)$ meets $L(c_i;P_i)$ infinitely often.
+}
+
+\only<3->{
+\item Let $P_i\setminus 0^n = \{ q_1,\dots,q_m \}$, consider the set 
+         \[ X = \{ (s,t_1,\dots,t_m)\in \N ^n | c + sp = c_i + \sum_{j = 1}^m t_j q_j \} \] 
+}
+
+\only<4->{
+\item $X$ is infinite. Lemma 6.1 of \cite{prereq} implies that there are distinct elements $(s,t_1,\dots,t_m)$ and 
+$(s',t_1',\dots,t_m')$ in $X$ such that $s \leq s'$ and $t_j \leq t_j'$ for all $1 \leq j \leq m$. Hence $s < s'$ and $(s' - s)p$ is a
+sum of positive multiples of some elements of $P_i$.
+}
+\only<2->{
+\end{enumerate}
+
+\end{proof}
+}
+\end{frame}
+
+\begin{frame}
+
+\begin{lemma}[2.4]\label{lemma 2.4}
+Let $X$ be a stratified subset of $\N ^n$ and $Y$ a subset of $\N ^n$. If for every $y\in Y$ there exists an $x \in X$ and a
+positive integer $k$ such that $kx \geq y$(component-wise ordering), then $Y$ is stratified.
+\end{lemma}
+
+\begin{proof}
+If $kx \geq y$ then $y$ can have non-zero co-ordinates only where $x$ has non-zero co-ordinates. Now take $y_1,y_2$. There
+exists $k_1,k_2 > 0$ and $x_1,x_2 \in X$ such that $k_1x_1 \geq y_1$, $k_2x_2 \geq y_2$. Then $x_1$ and $x_2$ are stratified,
+hence $y_1,y_2$ are stratified.
+\end{proof}
+
+\end{frame}
+
+\begin{frame}
+
+\only<1->{
+\begin{lemma}[2.5]\label{lemma 2.5}
+Let $L$ be a linear subset of $\N ^n$ with set of periods $P$ and $L'$ be a linear subset of $L$ with stratified periods. Then
+there is a finite subset $F$ of $L$ and a stratified subset $Y$ of $P$ such that
+$L' \subseteq L(F;Y) \subseteq L$.
+\end{lemma}
+}
+
+\only<2->{
+\begin{proof}
+\begin{enumerate}
+}
+
+\only<2>{
+\item Let $L' = L(c;X)$, where $X$ is a finite set of stratified periods.
+}
+
+\only<3->{
+\item Let $Y$ be the set of all $y\in P$ having the property that $\exists x \in X$ such that $kx \geq y$ for some $k \in \N$. 
+Using the lemma 2.4, $Y$ is stratified.
+}
+
+\only<4->{
+\item $\forall x \in X$, $L(c;x) \subseteq L$. Using lemma 2.3 says there is a $k > 0$ such that $kx$ is a sum of positive 
+multiples of some elements of $P$. Clearly these elements are in $Y$.
+}
+
+\only<5->{
+\item Let $X = \{x_1,\dots,x_m\}$ and let $k_i$ be a positive integer such that $k_i x_i$ is a sum of positive multiples of some
+elements of $Y$.
+}
+
+\only<6>{
+\item Let $F = \{ c + \sum_{i=1}^m | 0\leq t_i < k_i \}$. Clearly $F$ is a finite subset of $L$. As $Y\subseteq P$, 
+$L(F;Y) \subseteq L$.
+}
+
+\only<7->{
+\item Elements of $L'$ is of the form (with $1 \leq t_i < k_i$)
+\[ c + \sum_{i=1}^m s_i x_i = (c + \sum_{i = 1} ^m t_ix_i) + \sum_{i = 1} ^m r_i k_i x_i \in L(F;Y) .\]
+}
+
+\only<2->{
+\end{enumerate}
+\end{proof}
+}
+
+\end{frame}
+
+\begin{frame}
+
+\begin{corollary}[1]\label{corollary 1}
+A linear set $L = L(c ; P)$ is a finite union of linear sets with stratified periods \underline{if and only if} it is a finite union
+of linear sets each of whose periods form a stratified subset of $P$.
+\end{corollary}
+
+\begin{proof}
+One side is obvious.\smallskip
+
+Let $L = L_1 \cup \dots \cup L_m$. Each $L_i$ is a linear set with stratified periods. Then lemma 2.5 implies that
+there exists finite subsets $F_1,\dots,F_m$ of $L$ and stratified subsets of $Y_1,\dots,Y_m$ of $P$ such that
+\[ L = \cup_{i = 1} ^ m L(F_i ; Y_i).\]
+
+Then $L(F_i;Y_i)$ is a finite union of linear sets with set of stratified periods $Y_i$.
+\end{proof}
+\end{frame}
+
+\begin{frame}
+
+\only<1->{
+\begin{corollary}[2]\label{corollary 2}
+Let $L$ be a linear subset of $\N ^n$ with a linearly independent set of periods $P$. Then $\tau ^{-1} (L)$ is a language
+\underline{if and only if} $P$ is stratified.
+\end{corollary}
+}
+
+\only<2>{
+\begin{block}{Note}
+Theorem 2.1 says there exists a such a stratified set. This corollary fixes it to $P$.
+\end{block}
+}
+
+\only<3->{
+\begin{proof}
+\begin{enumerate}
+}
+
+\only<3>{
+\item $(\implies)$ $P$ is stratified. Then the theorem 2.1 implies $\tau^{-1} (L)$ is a language.
+}
+
+\only<4->{
+\item $(\impliedby)$ If $\tau^{-1} (L)$ is a language then theorem 2.1 and corollary 1 implies $L = \cup_{i=1} ^r L_i$ where
+          each $L_i$ is a linear set whose periods form a stratified subset of $P$.
+}
+
+\only<5->{
+\item Let $L = L(c;P)$, with $P = \{p_1,\dots,p_m\}$ then $L(c ; p_1 + \dots + p_m) \subseteq L$.
+}
+
+\only<6->{
+\item Lemma 2.3 implies there exists $1 \leq i \leq r$ such that $k(p_1 + \dots + p_m) = t_1p_1' + \dots t_sp_s'.$ Where
+         $p_1',\dots,p_s'$ are periods in $L_i$
+}
+
+\only<7->{
+\item $\{ p_1',\dots,p_s'\} \subseteq \{ p_1,\dots, p_m\} = P.$ P is linear independent. So $\{p_1',\dots,p_s'\} = P$ and $k = p_j$. 
+         And $P = \{ p_1',\dots,p_s'\}$.
+}
+
+\only<3->{
+\end{enumerate}
+\end{proof}
+}
+\end{frame}
+
+\begin{frame}
+
+\begin{corollary}[3]
+Let $L=L(c;P)$ be a linear subset of $N^{n}$. If $\tau^{-1}$(L) is a language,then for every period p with more than two non-zero coordinates there is a positive multiple kp which is a sum of positive multiples of some stratified periods of L.
+\end{corollary}
+
+\begin{proof}
+By corollary 1, $L(c;P) = \bigcup_{1}^{r}L(c_{i};P_{i})$, each $P_{i}$ a stratified subset of P. By Lemma 2.3 there exists $1\leq i\leq r$ and a positive integer k such that $kp$ is a sum of positive multiples os some elements of $P_{i}$.
+\end{proof}
+
+\end{frame}
+
+\begin{frame}
+
+\begin{theorem}[2.3]
+Given a semilinear subset L of $N^{n}$, $\tau^{-1}$(L) contains an infinite language if and only if whenever L is represented as a finite union of linear sets one of them has exactly a period of one or two non-zero coordinates.
+\end{theorem}
+
+\begin{proof}
+If $L(c; P) \leq L$ where P contains an element p having exactly one or two non-zero coordinates then 
+$L(c; p) \leq L$.Therefore $\tau^{-1}(L(c;p)$ is infinite and by theorem 2.1 is a CFL.
+If $\tau^{-1}(L)$ contains an infinte language it follows from theorem  2.1 that L contains a set of the form $L(c;p)$ where p 
+has exactly one or two non-zero coordinates.Given a represntation of L as a union of linear sets,it follows from lemma 2.3 
+that there exists $1\leq i \leq m$ such that some positive multiple of p is a sum of positie multiples of periods of $L_{i}$.
+Then $L_{i}$ has a period having exactly one or two non-zero coordinates.
+\end{proof}
+
+\end{frame}
+
+
+
+\begin{frame}
+\begin{thebibliography}{99}
+\bibitem{Main}
+Semigroups, Presburger Formulas, and Languages - Seymour Ginsburg and Edwin H. Spanier (Pacific Journal of 
+                     Mathematics, Vol.16, No.2, 1966)
+\bibitem{prereq}
+Bounded Algol-Like Languages - Seymour Ginsburg and Edwin H. Spanier
+
+\end{thebibliography}
+
+\end{frame}
+
+\end{document}
