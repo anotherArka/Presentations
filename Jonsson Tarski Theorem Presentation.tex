@@ -558,25 +558,29 @@ $-f(-1) = -f(0) = -0 = 1 \in V$.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}
+\begin{frame}\label{frame: n=1, F has finite meet property}
 
 \frametitle{Case: $n = 1$}
 
 \begin{block}{$F' := \{ a\cdot y\ |\ y\in F \}$ has the finite meet property.} 
-\visible<1->{Notice that,
+\begin{enumerate}
+\pause{\item[$\rightarrow$]Notice that,
 $(a\cdot y_1)\cdot\hdots\cdot(a\cdot y_n) = a\cdot(y_1\cdot\hdots\cdot y_n)$.}
-\visible<2->{Because $F$ is closed under taking finite meets we only need to prove that
-$a\cdot y \neq 0$ for all $y \in F$.}
-\visible<3->{But if $a\cdot y = 0$ then $a \leq (-y)$.} 
-\visible<4->{Because $f$ is additive it is also monotonic. So $f(a) \leq f(-y)$.}
-\visible<5->{Then $f(-y) \in V$. But that is in contradiction with $y \in F$.}
+\pause{\item[$\rightarrow$]Because $F$ is closed under taking finite meets 
+we only need to prove that $a\cdot y \neq 0$ for all $y \in F$.}
+\pause{\item[$\rightarrow$]But if $a\cdot y = 0$ then $a \leq (-y)$.} 
+\pause{\item[$\rightarrow$]Because $f$ is additive it is also monotonic. 
+So $f(a) \leq f(-y)$.}
+\pause{\item[$\rightarrow$]Then $f(-y) \in V$. 
+But that is in contradiction with the fact that $y \in F$.}
+\end{enumerate}
 \end{block}
 
-\visible<6->{Because $1\in F$, we have $a\in F'$.}
-\visible<7->{$F'$ has the finite meet property, so, there is an ultrafilter $U$
+\pause{Because $1\in F$, we have $a\in F'$.}
+\pause{$F'$ has the finite meet property, so, there is an ultrafilter $U$
 such that $F'\subseteq U$.}
-\visible<8->{$a\cdot y \leq y$, hence $F \subseteq U$.}
-\visible<9->{So $-f(-y) \in V \implies y \in U$. Hence $Q_fVU$.}
+\pause{$a\cdot y \leq y$, hence $F \subseteq U$.}
+\pause{So $-f(-y) \in V \implies y \in U$. Hence $Q_fVU$.}
 
 \end{frame}
 
@@ -639,17 +643,54 @@ $$\iff (\text{for all }\overrightarrow{x}\in\overrightarrow{V},
 
 \begin{block}{$F$ is closed under taking finite meets}
 \begin{enumerate}
-\visible<1->{
-\item[$\rightarrow$] Take $z',z'' \in F$.}
 \visible<2->{
+\item[$\rightarrow$] Take $z',z'' \in F$.}
+\visible<3->{
 \item[$\rightarrow$] Then there exists 
   $\overrightarrow{x'},\overrightarrow{x''}\in \overrightarrow{V}$ such that 
   $-f(\overrightarrow{x'},-z'),-f(\overrightarrow{x''},-z'') \in V.$}
-\visible<3->{
-\item[$\rightarrow$] Let $\overrightarrow{x} := (x_1'\cdot x_1'',\dots,x_n'\cdot x_n'')$}
 \visible<4->{
+\item[$\rightarrow$] Let $\overrightarrow{x} := (x_1'\cdot x_1'',\dots,x_n'\cdot x_n'')$}
+\visible<5->{
 \item[$\rightarrow$] $f(\overrightarrow{x},-(z'\cdot z'')) = 
   f(\overrightarrow{x},-z') + f(\overrightarrow{x},-z'')$}  
+\end{enumerate}
+\end{block}
+
+\visible<6->{
+\begin{block}{$1\in F$}
+\visible<7->{
+Let $\overrightarrow{1} = (1,\dots,1)$. Then $\overrightarrow{1} \in \overrightarrow{V}$.}
+\visible<8->{
+But, $-f(\overrightarrow{1},-1) = -f(\overrightarrow{1},0) = -0 = 1$.}
+\end{block}
+}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+
+\frametitle{Inductive case:}
+
+\begin{block}{$F' = \{ a_{n+1}\cdot y\ |\ y\in F\}$ has the finite meet property}
+\pause
+Because $F$ is closed under taking finite meets, it is enough to prove that
+$a_{n+1}\cdot z \neq 0$ for all $z\in F$.\smallskip
+
+\begin{enumerate}
+\pause
+\item[$\rightarrow$]Say $z\in F$ and $a_{n+1}\cdot z = 0$.
+\pause
+\item[$\rightarrow$]Then $a_{n+1} \leq (-z)$.
+\pause
+\item[$\rightarrow$]Also, there exists $\overrightarrow{x}$ such that 
+$-f(\overrightarrow{x},-z) \in V$.
+\pause
+\item[$\rightarrow$]Hence, due to monotonicity of $f$, 
+$-f(\overrightarrow{x},a_{n+1}) \in V.$
+\pause
+\item[$\rightarrow$]But that contradicts the induction hypothesis, which says 
+$\overrightarrow{x}\in \overrightarrow{V}$ implies $f(\overrightarrow{x},a_{n+1}) \in V$.
 \end{enumerate}
 \end{block}
 
