@@ -60,16 +60,29 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}\label{frame: modal similarity type}
+
+\visible<1->{
 \begin{definition}[Modal similarity type]\label{defn: modal similarity type}
 A modal similarity type $\tau$ is a pair $(O,\rho)$ where $O$ is a non-empty set, 
 and $\rho$ is a function $O\to\mathbb{N}$. An element $\Delta \in O$ is called a modal
 operator of arity $\rho(\Delta)$.
 \end{definition}
+}
+
+\visible<2->{
+\begin{definition}\label{defn: frame of a modal similarity type}
+\end{definition}
+Let $\tau$ be a modal similarity type. Let $W$ be a set and for every $\Delta \in \tau$ 
+let $R_{\Delta}$ be a $(\rho(\Delta) + 1)$-ary relation on $W$.
+Then $(W, R_{\Delta})_{\Delta \in \tau}$ is called a $\tau$-frame.
+}
+
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}\label{frame: boolean algebra}
+
 \begin{definition}[Boolean algebra]\label{defn: boolean algebra}
 Let $A$ be a non-empty set, $0 \in A$, $+$ be a binary operator and $-$ be an unary operator
 on $A$. Define $1 := 0$ and let $x\cdot y$ be the abbreviation for $-((-x)+(-y))$.\smallskip
@@ -103,18 +116,20 @@ for $x, y, z \in A$:
 
 \begin{frame}\label{frame: boolean algebra with operators}
 
-\visible<1->{
+\frametitle{Algebraizing modal logic}
+
+\visible<2->{
 \begin{block}{Axioms for the normal modal logic $\mathbf{K}$}
 $\Diamond \bot \longleftrightarrow \bot$\\
-$\Diamond (p \vee q) = \Diamond p \vee \Diamond q$
+$\Diamond (p \vee q) \longleftrightarrow \Diamond p \vee \Diamond q$
 \end{block}
 }
 
-\visible<2->{
+\visible<3->{
 \begin{definition}[Boolean algebra with operators]
 Let $\tau = (O, \rho)$ be a modal similarity type. Then
 $\mathcal{J} = (A, +, -, 0, f_{\Delta})_{\Delta \in \tau}$ is called a boolean algebra
-with operators if the following holds:
+with operators(BAO) if the following holds:
 
 \begin{enumerate}
 \item[$\blacktriangleright$] $(A,+,-,0)$ is a boolean algebra.
@@ -222,9 +237,50 @@ Let $a \in A$, and $F$ is a proper filter of $A$, such that $a \notin F$. Then t
 ultrafilter $L$, such that $F \subseteq L$ and $a \notin F$.
 \end{theorem}
 }
-
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}\label{frame: complex algebra}
+\frametitle{Algebraizing modal semantics}
+
+\only<1>{
+\begin{definition}\label{defn: alg modal op}
+Let $\tau$ be a modal similarity type $\tau = (O, \rho)$ and 
+$(W,R_{\Delta})_{\Delta \in \tau}$ a $\tau$-frame. For every $\Delta \in \tau$ define
+the $\rho(\Delta)$-ary function $m_{\Delta}$ on $\mathcal{P}(W)$ as:
+$$ m_{\Delta}(X_1,\dots,X_{\rho(\Delta)}) = $$ 
+$$\left\lbrace x \in W\ |\ \exists x_1\in X_1,\dots,x_{\rho(\Delta)}\in X_{\rho(\Delta)} 
+  \text{ s.t. } R_{\Delta}xx_1\dots x_{\rho(\Delta)} \right\rbrace$$
+\end{definition}
+}
+
+\only<2->{
+\begin{definition}[Complex algebra]
+
+\begin{enumerate}
+\visible<2->{
+\item[$\blacktriangleright$] Let $\tau$ be a modal similarity type, 
+and $\mathcal{M} = (W, R_{\Delta})_{\Delta \in \tau}$ a $\tau$-frame. 
+The (full) complex algebra of $\mathcal{M}$ (notation: $\mathcal{M}^+$ ) is defined as
+$$ \mathcal{M}^+ = (\mathcal{P}(W), \cup,(\cdot)^c, m_{\Delta})_{\Delta \in \tau},$$ 
+where $(\mathcal{P}(W), \cup,(\cdot)^c)$ is the power-set algebra.
+}
+
+\visible<3->{
+\item[$\blacktriangleright$] A complex algebra is a subalgebra of a full complex algebra.
+}
+
+\visible<4->{
+\item[$\blacktriangleright$] If $\mathcal{F}$ is a class of frames, then we denote 
+the class of full complex algebras of frames in $\mathcal{F}$ by $Cm \mathcal{F}$.
+}
+\end{enumerate}
+
+ 
+\end{definition}
+}
+
+\end{frame}
 
 \end{document}
