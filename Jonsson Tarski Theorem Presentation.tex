@@ -585,6 +585,37 @@ such that $F'\subseteq U$.}
 
 \frametitle{Inductive case: The theorem is true upto $n$. We want to prove for $n+1$}
 
+\begin{enumerate}
+\visible<1->{
+\item[$\rightarrow$]Let $f$ be an $(n+1)$-ary operator where $n \geq 1$.}
+\visible<2->{
+\item[$\rightarrow$]$(x_1,\dots,x_n) \mapsto f(x_1,\dots,x_n,a_{n+1})$ 
+is an operator of arity $n$.}
+\visible<3->{
+\item[$\rightarrow$] Using induction hypothesis we have ultrafilters $V_1,\dots,V_n$
+such that $x_1\in V_1,\dots,x_n\in V_n$ implies $f(x_1,\dots,x_n,a_{n+1}) \in V$.}
+\visible<4->{
+\item[] [From now on by $\overrightarrow{x} \in \overrightarrow{V}$
+we will mean a tuple $(x_1,\dots,x_n)$ such that $x_1\in V_1,\dots,x_n\in V_n$.]}
+\visible<5->{
+\item[$\rightarrow$] Let,
+$F := \{z \in A\ |\ \exists \overrightarrow{x}\in\overrightarrow{V}
+  \text{ such that } -f(\overrightarrow{x},-z) \in V \}$}
+
+\end{enumerate}
+
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+
+\frametitle{Inductive case: The theorem is true upto $n$. We want to prove for $n+1$}
+
+\visible<1->{Now notice the following,
+$$Q_fVV_1\dots V_nU$$
+$$\iff (\text{for all }\overrightarrow{x}\in\overrightarrow{V}, 
+  (y\in U \implies f(\overrightarrow{x},y) \in V.))$$}  
 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
