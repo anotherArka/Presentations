@@ -111,7 +111,28 @@ for $x, y, z \in A$:
 \end{multicols}
 \end{definition}
 \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\begin{frame}\label{frame: boolean alg as lattice}
+\begin{block}{Boolean algebra as lattices}
+Let $(A,+,-,0)$ be a boolean algebra. For $a,b\in A$ we say $a\leq b$ if $a+b = b$.
+It can be shown that $(A,\leq)$ forms a lattice with $+$ and $\cdot$ as its
+join and meet operation respectively.
+\end{block}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}\label{frame: method of contradiction in boolean algebra}
+\begin{lemma}
+If $(A,+,-,0)$ is a boolean algebra and $a,b\in A$ is such that $a.b = 0$ then,
+$a \leq (-b)$.
+\end{lemma}
+\pause
+\begin{proof}
+$-b = 0 + (-b) = (a\cdot b) + (-b) = (a + (-b))\cdot (b + (-b)) = (a + (-b))$
+\end{proof}
+
+\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}\label{frame: boolean algebra with operators}
@@ -149,22 +170,56 @@ $$f_{\Delta}(a_1,\dots,a_i,\dots,a_n) +
 \end{enumerate}
 \end{definition}
 \end{frame}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame} 
+\begin{frame}\label{frame: modal operators are monotonic}
+
+\begin{block}{Modal operators are monotonic}
+Consider a modal operator $f_{\Delta}$. Let $a \leq b$, i.e $a + b = b$.
+\pause Then,
+\begin{align*}
+f(\dots,b,\dots) &= f(\dots,a+b,\dots) \\
+                 &= f(\dots,a,\dots) + f(\dots,b,\dots)
+\end{align*}
+
+\end{block}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}\label{frame: boolean alg hom}
 
 \frametitle{Algebraizing modal logic}
 
 \begin{definition}[Homomorphisms between boolean algebras]
+Let $\mathcal{J} = (A,+,-,0)$ and $\mathcal{K} = (B,+,-,0)$ be boolean algebras. 
+A function $\psi : A \to B$ is called a boolean algebra homomorphism if the following hold
+for all $x,y\in A$:
+\begin{enumerate}
+\item[$\blacktriangleright$] $\psi(0) = 0$
+\item[$\blacktriangleright$] $\psi(x + y) = \psi(x) + \psi(y)$
+\item[$\blacktriangleright$] $\psi(-x) = -\psi (x)$
+\end{enumerate} 
 \end{definition}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}\label{frame: bao hom}
+\frametitle{Algebraizing modal logic}
 
 \begin{definition}[Homomorphisms between BAOs]
+Let $\mathcal{J} = (A,+,-,0)$ and $\mathcal{K} = (B,+,-,0)$ be boolean algebras with
+$\tau$-operators. A function $\psi : A \to B$ is called a BAO homomorphism 
+if the following hold:
+\begin{enumerate}
+\item[$\blacktriangleright$] $\psi$ is a boolean algebra homomorphism.
+\item[$\blacktriangleright$] For all $\Delta \in \tau$ and 
+$x_1,\dots,x_{\rho(\Delta)} \in A$,
+$$\psi(f_{\Delta}(x_1,\dots,x_n)) = 
+f_{\Delta}(\psi(a_1),\dots,\psi(a_{\rho(\Delta)}).$$
+\end{enumerate} 
 \end{definition}
-
-
 \end{frame}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}\label{frame: complex algebra}
@@ -534,7 +589,7 @@ $$ F = \{y \in A\ |\ -f(-y) \in A\}.$$}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}
+\begin{frame}\label{frame: n = 1, F is closed under taking finite meets}
 
 \frametitle{Case: $n = 1$}
 
@@ -585,7 +640,7 @@ such that $F'\subseteq U$.}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
+\begin{frame}\label{frame: inductive case, first frame}
 
 \frametitle{Inductive case: The theorem is true upto $n$. We want to prove for $n+1$}
 
@@ -614,7 +669,7 @@ $F := \{z \in A\ |\ \exists \overrightarrow{x}\in\overrightarrow{V}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}
+\begin{frame}\label{frame: inductive case, F should be inside U}
 
 \frametitle{Inductive case:}
 
@@ -637,7 +692,7 @@ $$\iff (\text{for all }\overrightarrow{x}\in\overrightarrow{V},
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}
+\begin{frame}\label{frame: inductive case, F is closed under finite meets}
 
 \frametitle{Inductive case:}
 
@@ -668,7 +723,7 @@ But, $-f(\overrightarrow{1},-1) = -f(\overrightarrow{1},0) = -0 = 1$.}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}
+\begin{frame}\label{frame: inductive case, F has the finite meet property}
 
 \frametitle{Inductive case:}
 
@@ -693,7 +748,32 @@ $-f(\overrightarrow{x},a_{n+1}) \in V.$
 $\overrightarrow{x}\in \overrightarrow{V}$ implies $f(\overrightarrow{x},a_{n+1}) \in V$.
 \end{enumerate}
 \end{block}
+\end{frame}
 
+\begin{frame}
+\frametitle{Inductive case:}
+\pause{Because $1\in F$, we have $a_{n+1}\in F'$.}
+\pause{$F'$ has the finite meet property, so, there is an ultrafilter $U$
+such that $F'\subseteq U$.}
+\pause{$a_{n+1}\cdot y \leq y$, hence $F \subseteq U$.}
+\pause{So $\overrightarrow{x} \in \overrightarrow{V}$ implies
+$-f(\overrightarrow{x},-y) \in V \implies y \in U$.\smallskip}
+
+\pause{
+Now assume $y\in U$ and $\overrightarrow{x} \in \overrightarrow{V}$,
+\begin{enumerate}
+\pause{
+\item[$\rightarrow$] Then $(-y)\notin U$.}
+\pause{
+\item[$\rightarrow$] Using the contrapositive of the last statement
+in the previous paragraph $-f(\overrightarrow{x},y) \notin V.$}
+\pause{
+\item[$\rightarrow$] Hence $f(\overrightarrow{x},y) \in V.$}  
+\end{enumerate}
+\pause{
+As $\overrightarrow{x} \in \overrightarrow{V}$ and $y\in U$ are arbitrary, this proves 
+$Q_fVV_1\dots V_nU$.}
+}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
