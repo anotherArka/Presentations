@@ -595,9 +595,11 @@ is an operator of arity $n$.}
 \item[$\rightarrow$] Using induction hypothesis we have ultrafilters $V_1,\dots,V_n$
 such that $x_1\in V_1,\dots,x_n\in V_n$ implies $f(x_1,\dots,x_n,a_{n+1}) \in V$.}
 \visible<4->{
+\item[$\rightarrow$] We want an ultrafilter $U$ such that $Q_fVV_1\dots V_nU$.}
+\visible<5->{
 \item[] [From now on by $\overrightarrow{x} \in \overrightarrow{V}$
 we will mean a tuple $(x_1,\dots,x_n)$ such that $x_1\in V_1,\dots,x_n\in V_n$.]}
-\visible<5->{
+\visible<6->{
 \item[$\rightarrow$] Let,
 $F := \{z \in A\ |\ \exists \overrightarrow{x}\in\overrightarrow{V}
   \text{ such that } -f(\overrightarrow{x},-z) \in V \}$}
@@ -610,13 +612,24 @@ $F := \{z \in A\ |\ \exists \overrightarrow{x}\in\overrightarrow{V}
 
 \begin{frame}
 
-\frametitle{Inductive case: The theorem is true upto $n$. We want to prove for $n+1$}
+\frametitle{Inductive case:}
 
-\visible<1->{Now notice the following,
-$$Q_fVV_1\dots V_nU$$
+\visible<1->{Now notice the following, which says that $Q_fVV_1\dots V_nU$ implies
+  $F\subseteq U$}
+\visible<2->{    
+$$Q_fVV_1\dots V_nU$$}
+\visible<3->{
 $$\iff (\text{for all }\overrightarrow{x}\in\overrightarrow{V}, 
-  (y\in U \implies f(\overrightarrow{x},y) \in V.))$$}  
-
+  (y\in U \implies f(\overrightarrow{x},y) \in V.))$$}
+\visible<4->{
+$$\iff (\text{for all }\overrightarrow{x}\in\overrightarrow{V}, 
+  (f(\overrightarrow{x},y) \notin V \implies y\notin U.))$$}
+\visible<5->{
+$$\iff (\text{for all }\overrightarrow{x}\in\overrightarrow{V}, 
+  (-f(\overrightarrow{x},y) \in V \implies (-y)\in U.))$$}      
+\visible<6->{
+$$\iff (\text{for all }\overrightarrow{x}\in\overrightarrow{V}, 
+  (-f(\overrightarrow{x},-z) \in V \implies z\in U.))$$}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
