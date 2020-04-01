@@ -150,9 +150,70 @@ $$f_{\Delta}(a_1,\dots,a_i,\dots,a_n) +
 \end{definition}
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame} 
+
+\frametitle{Algebraizing modal logic}
+
+\begin{definition}[Homomorphisms between boolean algebras]
+\end{definition}
+
+\begin{definition}[Homomorphisms between BAOs]
+\end{definition}
+
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}\label{frame: complex algebra}
+\frametitle{Algebraizing modal semantics}
+
+\only<1>{
+\begin{definition}\label{defn: alg modal op}
+Let $\tau$ be a modal similarity type $\tau = (O, \rho)$ and 
+$(W,R_{\Delta})_{\Delta \in \tau}$ a $\tau$-frame. For every $\Delta \in \tau$ define
+the $\rho(\Delta)$-ary function $m_{\Delta}$ on $\mathcal{P}(W)$ as:
+$$ m_{\Delta}(X_1,\dots,X_{\rho(\Delta)}) = $$ 
+$$\left\lbrace x \in W\ |\ \exists x_1\in X_1,\dots,x_{\rho(\Delta)}\in X_{\rho(\Delta)} 
+  \text{ s.t. } R_{\Delta}xx_1\dots x_{\rho(\Delta)} \right\rbrace$$
+\end{definition}
+}
+
+\only<2->{
+\begin{definition}[Complex algebra]
+
+\begin{enumerate}
+\visible<2->{
+\item[$\blacktriangleright$] Let $\tau$ be a modal similarity type, 
+and $\mathcal{M} = (W, R_{\Delta})_{\Delta \in \tau}$ a $\tau$-frame. 
+The (full) complex algebra of $\mathcal{M}$ (notation: $\mathcal{M}^+$ ) is defined as
+$$ \mathcal{M}^+ = (\mathcal{P}(W), \cup,(\cdot)^c, m_{\Delta})_{\Delta \in \tau},$$ 
+where $(\mathcal{P}(W), \cup,(\cdot)^c)$ is the power-set algebra.
+}
+
+\visible<3->{
+\item[$\blacktriangleright$] A complex algebra is a subalgebra of a full complex algebra.
+}
+
+\visible<4->{
+\item[$\blacktriangleright$] If $\mathcal{F}$ is a class of frames, then we denote 
+the class of full complex algebras of frames in $\mathcal{F}$ by $Cm \mathcal{F}$.
+}
+\end{enumerate}
+
+ 
+\end{definition}
+}
+
+\end{frame}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}\label{frame: filters and ultrafilters}
+
+\frametitle{Filters and ultrafilters}
 
 \begin{definition}[Filter]\label{defn: filter}
 Given a boolean algebra $\mathcal{K} = (A,+,-,0)$, $F\subseteq A$ is called a filter if:
@@ -168,7 +229,7 @@ $F$ is called proper if $0 \notin F$, or, equivalently, if $F$ is a strict subse
 \begin{definition}[Ultrafilter]\label{defn: ultrafilter}
 A filter $F$ is called an ultrafilter if for every $a \in A$, either $a$ or $-a$ 
 belongs to $F$. We will denote the collection of ultrafilters of $\mathcal{K}$ as
-$\mathbb{UF}(\mathcal{K})$. 
+$\mathbf{UF}\mathcal{K}$. 
 \end{definition}
 }
 
@@ -241,45 +302,33 @@ ultrafilter $L$, such that $F \subseteq L$ and $a \notin F$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}\label{frame: complex algebra}
-\frametitle{Algebraizing modal semantics}
+\begin{frame}\label{frame: Stone embedding}
 
-\only<1>{
-\begin{definition}\label{defn: alg modal op}
-Let $\tau$ be a modal similarity type $\tau = (O, \rho)$ and 
-$(W,R_{\Delta})_{\Delta \in \tau}$ a $\tau$-frame. For every $\Delta \in \tau$ define
-the $\rho(\Delta)$-ary function $m_{\Delta}$ on $\mathcal{P}(W)$ as:
-$$ m_{\Delta}(X_1,\dots,X_{\rho(\Delta)}) = $$ 
-$$\left\lbrace x \in W\ |\ \exists x_1\in X_1,\dots,x_{\rho(\Delta)}\in X_{\rho(\Delta)} 
-  \text{ s.t. } R_{\Delta}xx_1\dots x_{\rho(\Delta)} \right\rbrace$$
+\frametitle{Stone embedding}
+
+\visible<1->{
+\begin{definition}[Stone embedding]
+Let $\mathcal{K} = (A,+,-,0)$ be a boolean algebra. The Stone embedding 
+$\rho : A \to \mathcal{P}(\mathbb{UF}\mathcal{K})$ is defined as,
+$$\rho(a) = \{V \in \mathbb{UF}\mathcal{K}\ |\ a\in V \}$$
 \end{definition}
 }
 
-\only<2->{
-\begin{definition}[Complex algebra]
-
-\begin{enumerate}
 \visible<2->{
-\item[$\blacktriangleright$] Let $\tau$ be a modal similarity type, 
-and $\mathcal{M} = (W, R_{\Delta})_{\Delta \in \tau}$ a $\tau$-frame. 
-The (full) complex algebra of $\mathcal{M}$ (notation: $\mathcal{M}^+$ ) is defined as
-$$ \mathcal{M}^+ = (\mathcal{P}(W), \cup,(\cdot)^c, m_{\Delta})_{\Delta \in \tau},$$ 
-where $(\mathcal{P}(W), \cup,(\cdot)^c)$ is the power-set algebra.
+\begin{theorem}
+$\rho$ is an embedding of boolean algebras.
+\end{theorem}
 }
+\end{frame}
 
-\visible<3->{
-\item[$\blacktriangleright$] A complex algebra is a subalgebra of a full complex algebra.
-}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\visible<4->{
-\item[$\blacktriangleright$] If $\mathcal{F}$ is a class of frames, then we denote 
-the class of full complex algebras of frames in $\mathcal{F}$ by $Cm \mathcal{F}$.
-}
-\end{enumerate}
+\begin{frame}
+\frametitle{Stone embedding}
 
- 
-\end{definition}
-}
+\begin{proof}
+$\rho$ is a homomorphism
+\end{proof}
 
 \end{frame}
 
