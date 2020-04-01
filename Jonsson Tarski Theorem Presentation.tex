@@ -23,7 +23,7 @@
 \usecolortheme{whale}
 \usecolortheme{orchid}
 
-\definecolor{beamer@blendedblue}{rgb}{0.137,0.466,0.741}
+\definecolor{beamer@blendedblue}{rgb}{0.2,0.4,0.8}
 
 \setbeamercolor{structure}{fg=beamer@blendedblue}
 \setbeamercolor{titlelike}{parent=structure}
@@ -182,7 +182,7 @@ $$\left\lbrace x \in W\ |\ \exists x_1\in X_1,\dots,x_{\rho(\Delta)}\in X_{\rho(
 }
 
 \only<2->{
-\begin{definition}[Complex algebra]
+\begin{definition}[Complex algebra]\label{defn: complex algebra}
 
 \begin{enumerate}
 \visible<2->{
@@ -202,9 +202,29 @@ where $(\mathcal{P}(W), \cup,(\cdot)^c)$ is the power-set algebra.
 the class of full complex algebras of frames in $\mathcal{F}$ by $Cm \mathcal{F}$.
 }
 \end{enumerate}
-
- 
 \end{definition}
+}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}\label{frame: complex alg are BAO}
+
+\begin{lemma}
+Let $\tau$ be a modal similarity type, and $\mathcal{M} = (W, R_{\Delta})_{\Delta \in \tau}$ a 
+$\tau$-frame. Then $\mathcal{M}^+$ is a boolean algebra with $\tau$-operators.
+\end{lemma}
+
+\visible<2->{
+\begin{proof}
+To check:
+\begin{enumerate}
+\item[$\blacktriangleright$] $m_{\Delta}(X_1,\dots,X_n) = \phi$ if $X_i = \phi$ for some $i$.
+\item[$\blacktriangleright$] $m_{\Delta}(X_1,\dots,X_i \cup X_i',\dots,X_n) = 
+  m_{\Delta}(X_1,\dots,X_i,\dots,X_n) \cup m_{\Delta}(X_1,\dots,X_i',\dots,X_n)$ for all $i$. 
+\end{enumerate}
+\end{proof}
 }
 
 \end{frame}
@@ -307,7 +327,7 @@ ultrafilter $L$, such that $F \subseteq L$ and $a \notin F$.
 \frametitle{Stone embedding}
 
 \visible<1->{
-\begin{definition}[Stone embedding]
+\begin{definition}[Stone embedding]\label{defn: stone emb}
 Let $\mathcal{K} = (A,+,-,0)$ be a boolean algebra. The Stone embedding 
 $\rho : A \to \mathcal{P}(\mathbb{UF}\mathcal{K})$ is defined as,
 $$\rho(a) = \{V \in \mathbb{UF}\mathcal{K}\ |\ a\in V \}$$
@@ -315,7 +335,7 @@ $$\rho(a) = \{V \in \mathbb{UF}\mathcal{K}\ |\ a\in V \}$$
 }
 
 \visible<2->{
-\begin{theorem}
+\begin{theorem}\label{thm: stone emb}
 $\rho$ is an embedding of boolean algebras.
 \end{theorem}
 }
@@ -323,13 +343,113 @@ $\rho$ is an embedding of boolean algebras.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}
+\begin{frame}\label{frame: stone is hom}
 \frametitle{Stone embedding}
 
-\begin{proof}
-$\rho$ is a homomorphism
+\begin{proof}[$\rho$ is a homomorphism:]
+
+For $a,b \in A$
+\begin{align*}
+\visible<1->{
+\rho(a+b) &= \{V \in \mathbb{UF}\mathcal{K}\ |\ a+b\in V \}\\
+  &= \{V \in \mathbb{UF}\mathcal{K}\ |\ a\in V \text{ or } b\in V\}\\
+  &= \{V \in \mathbb{UF}\mathcal{K}\ |\ a\in V \} \cup 
+     \{V \in \mathbb{UF}\mathcal{K}\ |\ a\in V \} \\
+  &= \rho(a) \cup \rho(b) \\}
+\visible<2->{  
+\intertext{also, }
+  \mathbb{UF}\mathcal{K} &= \rho(1) = \rho(a+(-a)) = \rho(a) \cup \rho(-a)}
+\end{align*}
+
 \end{proof}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}\label{frame: stone is into}
+\frametitle{Stone embedding}
+
+\begin{proof}[$\rho$ is injective:]
+\visible<1->{Let $a,b \in A$ and $a\neq b$.}
+\visible<2->{Then either $a\nleq b$ or $b\nleq a$.}
+\visible<3->{WLOG assume $a\nleq b$.}
+\visible<4->{Then $b \notin a\uparrow$.}
+\visible<5->{Hence there is some ultrafilter $V$ such that 
+  $a\uparrow \subseteq V$ and $b\notin V$.}
+\visible<6->{But then $V\in \rho(a)$ and $V \notin \rho(b).$} 
+\end{proof}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}\label{frame: ultrafilter frames}
+\frametitle{Ultrafilter frames}
+
+\visible<1->{
+\begin{definition}\label{defn: ultrafilter op} 
+Let $f$ be an $n$-ary operation on the boolean algbera
+$\mathcal{K} = (A,+,-,0)$. Define the $(n+1)$-ary relation $Q_f$ 
+on $\mathbb{UF}\mathcal{K}$ as:
+$$ Q_f VV_1\dots V_n \text{ iff } f(a_1 ,\dots, a_n )\in V 
+\text{ for all } a_1\in V_1,\dots ,a_n\in V_n.$$
+\end{definition}
+}
+
+\visible<2->{
+\begin{definition}[Ultrafilter frame]\label{defn: ultrafilter frame}
+Let $\mathcal{K} = (A,+,-,0,f_{\Delta})_{\Delta \in \tau}$ 
+be a BAO. The ultrafilter frame $\mathcal{K}_+$ is the structure 
+$(\mathbb{UF}\mathcal{K}, Q_{f_{\Delta}})_{\Delta \in \tau}$.
+\end{definition}
+}
+ 
+\visible<3->{
+\begin{definition}[Canonical embedding algebra]\label{defn: can emb alg}
+The complex algebra 
+$(\mathcal{K}_+)^+$ on $\mathcal{P}(\mathbb{UF}\mathcal{K})$
+is called the (canonical) embedding algebra of $\mathcal{K}$ and is
+denoted as $\mathbb{CE}\mathcal{K}$.
+\end{definition}
+}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Ultrafilter frames}
+
+\begin{lemma}
+Let $f$ be an $n$-ary operator on the boolean algebra $\mathcal{K}$, and 
+$V, V_1,\dots ,V_n$ be ultrafilters of A. Then
+$Q_f VV_1\dots V_n$ iff $-f(-a_1,\dots ,-a_n) \in V$ implies that for some $i$, $a_i\in V_i$.
+\end{lemma}
+
+\only<2>{
+\begin{proof}
+$(\implies)$ 
+\begin{align*}
+-f(-a_1,\dots ,-a_n) \in V &\iff f(-a_1,\dots ,-a_n) \notin V\\
+&\implies (-a_i) \notin V \text{ for some $i$}\\
+&\implies a_i \in V \text{ for some $i$.} 
+\end{align*}
+\end{proof}
+}
+
+\only<3>{
+\begin{proof}
+$(\Longleftarrow)$ 
+Say $a_1\in V_1,\dots, a_n\in V_n$. Then,
+\begin{align*}
+f(a_1,\dots,a_n) \notin V &\implies -f(a_1,\dots,a_n) \in V \\
+&\implies (-a_j)\in V_j \text{ for some } j \\
+&\implies a_j\notin V_j \text{ for some } j. 
+\end{align*}
+But that contradicts our assumption.
+\end{proof}
+}
+
 
 \end{frame}
+
 
 \end{document}
