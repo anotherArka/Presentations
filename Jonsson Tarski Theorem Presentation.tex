@@ -633,6 +633,28 @@ $$\iff (\text{for all }\overrightarrow{x}\in\overrightarrow{V},
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\begin{frame}
+
+\frametitle{Inductive case:}
+
+\begin{block}{$F$ is closed under taking finite meets}
+\begin{enumerate}
+\visible<1->{
+\item[$\rightarrow$] Take $z',z'' \in F$.}
+\visible<2->{
+\item[$\rightarrow$] Then there exists 
+  $\overrightarrow{x'},\overrightarrow{x''}\in \overrightarrow{V}$ such that 
+  $-f(\overrightarrow{x'},-z'),-f(\overrightarrow{x''},-z'') \in V.$}
+\visible<3->{
+\item[$\rightarrow$] Let $\overrightarrow{x} := (x_1'\cdot x_1'',\dots,x_n'\cdot x_n'')$}
+\visible<4->{
+\item[$\rightarrow$] $f(\overrightarrow{x},-(z'\cdot z'')) = 
+  f(\overrightarrow{x},-z') + f(\overrightarrow{x},-z'')$}  
+\end{enumerate}
+\end{block}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \end{document}
