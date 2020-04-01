@@ -562,12 +562,33 @@ $-f(-1) = -f(0) = -0 = 1 \in V$.
 
 \frametitle{Case: $n = 1$}
 
-\begin{block}{$F' := \{ a\cdot y\ |\ y\in F \}$ has the finite meet property.}
-
+\begin{block}{$F' := \{ a\cdot y\ |\ y\in F \}$ has the finite meet property.} 
+\visible<1->{Notice that,
+$(a\cdot y_1)\cdot\hdots\cdot(a\cdot y_n) = a\cdot(y_1\cdot\hdots\cdot y_n)$.}
+\visible<2->{Because $F$ is closed under taking finite meets we only need to prove that
+$a\cdot y \neq 0$ for all $y \in F$.}
+\visible<3->{But if $a\cdot y = 0$ then $a \leq (-y)$.} 
+\visible<4->{Because $f$ is additive it is also monotonic. So $f(a) \leq f(-y)$.}
+\visible<5->{Then $f(-y) \in V$. But that is in contradiction with $y \in F$.}
 \end{block}
+
+\visible<6->{Because $1\in F$, we have $a\in F'$.}
+\visible<7->{$F'$ has the finite meet property, so, there is an ultrafilter $U$
+such that $F'\subseteq U$.}
+\visible<8->{$a\cdot y \leq y$, hence $F \subseteq U$.}
+\visible<9->{So $-f(-y) \in V \implies y \in U$. Hence $Q_fVU$.}
 
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+
+\frametitle{Inductive case: The theorem is true upto $n$. We want to prove for $n+1$}
+
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 
 \end{document}
