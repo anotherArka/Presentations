@@ -14,8 +14,8 @@
 %\usecolortheme{orchid}
 % TikZ options
 \usetikzlibrary{arrows,shapes}
-%\useoutertheme{split}
-%\useoutertheme[footline=authortitle]{miniframes}
+\useoutertheme{split}
+\useoutertheme[footline=authortitle]{miniframes}
 %\useinnertheme{circles}
 %\usecolortheme{whale}
 %\usecolortheme{orchid}
@@ -26,17 +26,20 @@
 \definecolor{beamer@lightgray}{rgb}{0.5,0.7,0.5}
 \definecolor{beamer@mybrown}{rgb}{0.3,0.3,0.2}
 \definecolor{beamer@mathtext}{rgb}{0.9,0.5,0.4}
+\definecolor{beamer@header}{rgb}{0.4,0.1,0.1}
 
 \setbeamercolor{background canvas}{fg=white, bg=black}
 \setbeamercolor{normal text}{fg=beamer@lightgray,bg=black}
 
 \setbeamercolor{alerted text}{fg=red}
 \setbeamercolor{example text}{fg=green!50!black}
+\setbeamercolor{miniframes}{fg=red,bg=white}
 \setbeamercolor{structure}{fg=beamer@deepblue}
-\setbeamercolor{titlelike}{parent=structure}
+\setbeamercolor{titlelike}{fg=magenta}
 \setbeamercolor{frametitle}{fg=beamer@myviolet}
 \setbeamercolor{title}{fg=beamer@myviolet}
 \setbeamercolor{item}{fg=beamer@mybrown}
+\setbeamercolor{section in head/foot}{fg=white,bg=beamer@header}
 
 
 \mode
@@ -183,8 +186,8 @@ The following define full and faithful embeddings:
 \section{Consequences}
 
 \begin{frame}
-\framesubtitle{An alternate proof of Cayley's theorem using the Yoneda lemma}
 
+	
 \end{frame}
 
 \end{document}
