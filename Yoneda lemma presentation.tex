@@ -1,69 +1,55 @@
-\documentclass[10pt]{beamer}
-\usepackage{listings}
-%\usetheme{Boadilla}
-%\usecolortheme{beaver}
-
-\useoutertheme{smoothbars}
-
-\usepackage{lmodern}
-\usepackage[scale=2]{ccicons}
-
+\documentclass[10pt,compress]{beamer}
+\usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage{multicol}
-\usepackage[latin9]{inputenc}
-\usepackage{graphicx}
-\usepackage{array}
-%\usepackage{enumitem}
-\usepackage{amsthm,amsmath,latexsym,amssymb,amsmath}
-\usepackage{mathrsfs,graphicx,xargs,etoolbox}
+\usepackage{lmodern}
+\usepackage{tikz}
+\usetikzlibrary{patterns}
+\usepackage{tikz-cd}
+%\tikzset{commutative diagrams/arrow style=math font}
 
-
-\DeclareOptionBeamer{compress}{\beamer@compresstrue}
-\ProcessOptionsBeamer
-
-\mode<presentation>
-
-\useoutertheme{split}
-\useoutertheme[footline=authortitle]{miniframes}
-\useinnertheme{circles}
-\usecolortheme{whale}
-\usecolortheme{orchid}
+% Beamer commands
+\title{The Yoneda Lemma}
+%\setbeamertemplate{navigation symbols}{}
+%\setbeamertemplate{blocks}[rounded][shadow=false]
+%\usecolortheme{orchid}
+% TikZ options
+\usetikzlibrary{arrows,shapes}
+%\useoutertheme{split}
+%\useoutertheme[footline=authortitle]{miniframes}
+%\useinnertheme{circles}
+%\usecolortheme{whale}
+%\usecolortheme{orchid}
 
 \definecolor{beamer@blendedblue}{rgb}{0.3,0.5,0.8}
+\definecolor{beamer@myviolet}{rgb}{0.7,0.2,0.5}
+\definecolor{beamer@deepblue}{rgb}{0.5,0.5,0.7}
+\definecolor{beamer@lightgray}{rgb}{0.5,0.7,0.5}
+\definecolor{beamer@mybrown}{rgb}{0.3,0.3,0.2}
+\definecolor{beamer@mathtext}{rgb}{0.9,0.5,0.4}
 
-\setbeamercolor{structure}{fg=beamer@blendedblue}
+\setbeamercolor{background canvas}{fg=white, bg=black}
+\setbeamercolor{normal text}{fg=beamer@lightgray,bg=black}
+
+\setbeamercolor{alerted text}{fg=red}
+\setbeamercolor{example text}{fg=green!50!black}
+\setbeamercolor{structure}{fg=beamer@deepblue}
 \setbeamercolor{titlelike}{parent=structure}
-\setbeamercolor{frametitle}{fg=black}
-\setbeamercolor{title}{fg=black}
-\setbeamercolor{item}{fg=black}
+\setbeamercolor{frametitle}{fg=beamer@myviolet}
+\setbeamercolor{title}{fg=beamer@myviolet}
+\setbeamercolor{item}{fg=beamer@mybrown}
+
 
 \mode
 <all>
 
-%commands
-\newcommand{\U}{\mathscr{U}}
-\newcommand{\R}{\mathbb{R}}
-
-\theoremstyle{definition}
-\newtheorem{question}{Question}[section]
-
-\theoremstyle{definition}
-\newtheorem{answer}{Answer}[section]
-
-
-\setbeamercovered{invisible}
-
-\title{The Yoneda Lemma}
-\author{Arka Ghosh}
-\date{}
-
+%\setbeamercovered{invisible}
 \begin{document}
 
 \begin{frame}\label{frame: titlepage}
 \titlepage
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Representable Functors}
 \begin{frame}\label{frame: representable functors}
 \frametitle{Representable Functors}
@@ -80,7 +66,7 @@ Dually, A representation of a contravariant functor $F : C \to Set$ consists of 
 $c \in C$ along with a natural isomorphism $\alpha : Hom(-,c) \cong F$.\smallskip
 
 \item[$\blacktriangleright$]
-A funtor is representable if it has a representation
+A funtor is representable if it has a representation.
 
 \item[$\blacktriangleright$]
 For issues with size, we need $C$ to be locally small.
@@ -90,8 +76,7 @@ For issues with size, we need $C$ to be locally small.
 \end{definition}
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}\label{frame : eg of cov rep func}
 \frametitle{Examples}
 
@@ -116,7 +101,7 @@ $X$ to its set of paths is represented by the unit interval $I$.
 
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}\label{frame : eg of contra rep func}
 
@@ -144,8 +129,62 @@ $K$, considered as a vector space on itself.
 
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{The Yoneda Lemma}
+\begin{frame}
+
+\begin{theorem}[The Yoneda lemma]
+\only<1>{
+For a locally small category $C$ and a covariant functor $F : C \to Set$, 
+there is a bijection
+\[ Y_c : Nat(Hom(c,-), F) \cong Fc .\]
+It maps a natural transformation $\alpha : Hom(c,-) \implies F$ to the element 
+$\alpha_c(id_c)$, and is natural in both $c$ and $F$.\smallskip
+}
+
+\only<2>{
+Dually, for a locally small category $C$ and a contravariant functor $F : C \to Set$, 
+there is a bijection
+\[ Y_c : Nat(Hom(-,c), F) \cong Fc .\]
+It maps a natural transformation $\alpha : Hom(-,c) \implies F$ to the element 
+$\alpha_c(id_c)$, and is natural in both $c$ and $F$.\smallskip
+}
+\end{theorem}
 
 
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{The Yoneda Embedding}
+\begin{frame}[fragile]
+
+\frametitle{The Yoneda Embedding}
+
+The following define full and faithful embeddings:
+
+\color{beamer@mathtext}{
+\begin{equation*}
+\begin{tikzcd}
+	C \arrow[r, "Y", hook] & Set^{C^{op}}\\
+    c \arrow[r, mapsto] \arrow[d, "f" '] & Hom(-,c) \arrow[d, "f_*"] \\
+    d \arrow[r, mapsto] & Hom(-,d)	 
+\end{tikzcd} \hspace{20pt}
+\begin{tikzcd}
+	C^{op} \arrow[r, "Y", hook] & Set^{C}\\
+    c \arrow[r, mapsto] \arrow[d, "f" '] & Hom(c,-)  \\
+    d \arrow[r, mapsto] & Hom(d,-)	\arrow[u, "f_*" '] 
+\end{tikzcd}
+\end{equation*}
+}
+\end{frame}
+
+\section{Consequences}
+
+\begin{frame}
+\framesubtitle{An alternate proof of Cayley's theorem using the Yoneda lemma}
+
+\end{frame}
 
 \end{document}
