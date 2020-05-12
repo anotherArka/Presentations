@@ -30,7 +30,6 @@
 
 \setbeamercolor{background canvas}{fg=white, bg=black}
 \setbeamercolor{normal text}{fg=beamer@lightgray,bg=black}
-
 \setbeamercolor{alerted text}{fg=red}
 \setbeamercolor{example text}{fg=green!50!black}
 \setbeamercolor{miniframes}{fg=red,bg=white}
@@ -40,6 +39,8 @@
 \setbeamercolor{title}{fg=beamer@myviolet}
 \setbeamercolor{item}{fg=beamer@mybrown}
 \setbeamercolor{section in head/foot}{fg=white,bg=beamer@header}
+
+\setbeamerfont{framesubtitle}{size=10pt}
 
 
 \mode
@@ -187,7 +188,42 @@ The following define full and faithful embeddings:
 
 \begin{frame}
 
+\begin{block}{An alternate proof of Cayley's theorem}
+Write the proof
+\end{block}	
 	
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Some nice properties of $\widehat{C} = Set^{C^{op}}$}
+
+\begin{enumerate}
+
+\item[$\blacktriangleright$]
+$\widehat{C}$ has small limits and co-limits. For a small diagram $F : I \to \widehat{C}$ 
+
+\textcolor{beamer@mathtext}{
+\[ (\lim_{\to} F(i))(U) = (\lim_{\to}F(i)(U)) \]
+}
+
+
+Specifically $\widehat{C}$ has products and co-products indexed over a set.
+
+\item[$\blacktriangleright$]
+$\widehat{C}$ has exponentials when $C$ is small. For $A, B : C^{op} \to Set$ we have
+
+\textcolor{beamer@mathtext}{
+\[ B^A(I) = Nat(Y(I) \times A, B) \]
+\[ B^A(u) = Nat(Y(u) \times A, B) \]
+}
+
+\end{enumerate}
+
+
+
+
 \end{frame}
 
 \end{document}
