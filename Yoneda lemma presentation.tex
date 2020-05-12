@@ -142,15 +142,18 @@ $K$, considered as a vector space on itself.
 \only<1>{
 For a locally small category $C$ and a covariant functor $F : C \to Set$, 
 there is a bijection
+\textcolor{beamer@mathtext}{
 \[ Y_c : Nat(Hom(c,-), F) \cong Fc .\]
+}
 It maps a natural transformation $\alpha : Hom(c,-) \implies F$ to the element 
 $\alpha_c(id_c)$, and is natural in both $c$ and $F$.\smallskip
 }
-
 \only<2>{
 Dually, for a locally small category $C$ and a contravariant functor $F : C \to Set$, 
 there is a bijection
+\textcolor{beamer@mathtext}{
 \[ Y_c : Nat(Hom(-,c), F) \cong Fc .\]
+}
 It maps a natural transformation $\alpha : Hom(-,c) \implies F$ to the element 
 $\alpha_c(id_c)$, and is natural in both $c$ and $F$.\smallskip
 }
@@ -207,17 +210,17 @@ $\widehat{C}$ has small limits and co-limits. For a small diagram $F : I \to \wi
 \textcolor{beamer@mathtext}{
 \[ (\lim_{\to} F(i))(U) = (\lim_{\to}F(i)(U)) \]
 }
-
-
 Specifically $\widehat{C}$ has products and co-products indexed over a set.
 
 \item[$\blacktriangleright$]
 $\widehat{C}$ has exponentials when $C$ is small. For $A, B : C^{op} \to Set$ we have
 
 \textcolor{beamer@mathtext}{
-\[ B^A(I) = Nat(Y(I) \times A, B) \]
-\[ B^A(u) = Nat(Y(u) \times A, B) \]
+\[ B^A(I) \cong Nat(Y(I), B^A) \cong Nat(Y(I) \times A, B) \]
 }
+The first isomorphism follows directly from the Yoneda lemma.
+The second isomorphism follows if we assume that exponentials exists. 
+Since it is well formed, this actually gives a definition of the exponential.
 
 \end{enumerate}
 
