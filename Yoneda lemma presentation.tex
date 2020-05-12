@@ -1,0 +1,95 @@
+\documentclass[10pt]{beamer}
+\usepackage{listings}
+%\usetheme{Boadilla}
+%\usecolortheme{beaver}
+
+\useoutertheme{smoothbars}
+
+\usepackage{lmodern}
+\usepackage[scale=2]{ccicons}
+
+\usepackage[T1]{fontenc}
+\usepackage{multicol}
+\usepackage[latin9]{inputenc}
+\usepackage{graphicx}
+\usepackage{array}
+%\usepackage{enumitem}
+\usepackage{amsthm,amsmath,latexsym,amssymb,amsmath}
+\usepackage{mathrsfs,graphicx,xargs,etoolbox}
+
+
+\DeclareOptionBeamer{compress}{\beamer@compresstrue}
+\ProcessOptionsBeamer
+
+\mode<presentation>
+
+\useoutertheme{split}
+\useoutertheme[footline=authortitle]{miniframes}
+\useinnertheme{circles}
+\usecolortheme{whale}
+\usecolortheme{orchid}
+
+\definecolor{beamer@blendedblue}{rgb}{0.3,0.5,0.8}
+
+\setbeamercolor{structure}{fg=beamer@blendedblue}
+\setbeamercolor{titlelike}{parent=structure}
+\setbeamercolor{frametitle}{fg=black}
+\setbeamercolor{title}{fg=black}
+\setbeamercolor{item}{fg=black}
+
+\mode
+<all>
+
+%commands
+\newcommand{\U}{\mathscr{U}}
+\newcommand{\R}{\mathbb{R}}
+
+\theoremstyle{definition}
+\newtheorem{question}{Question}[section]
+
+\theoremstyle{definition}
+\newtheorem{answer}{Answer}[section]
+
+
+\setbeamercovered{invisible}
+
+\title{The Yoneda Lemma}
+\author{Arka Ghosh}
+\date{}
+
+\begin{document}
+
+\begin{frame}\label{frame: titlepage}
+\titlepage
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Representable Functors}
+\begin{frame}\label{frame: representable functors}
+\frametitle{Representable Functors}
+
+\begin{definition}[Representation of a functor]
+\begin{enumerate}
+
+\item[$\blacktriangleright$]
+A representation of a covariant functor $F : C \to Set$ consists of an object $c \in C$ 
+along with a natural isomorphism $\alpha : Hom(c,-) \cong F$.\smallskip
+
+\item[$\blacktriangleright$] 
+Dually, A representation of a contravariant functor $F : C \to Set$ consists of an object 
+$c \in C$ along with a natural isomorphism $\alpha : Hom(-,c) \cong F$.\smallskip
+
+\item[$\blacktriangleright$]
+A funtor is representable if it has a representation
+
+\item[$\blacktriangleright$]
+For issues with size, we need $C$ to be locally small.
+
+\end{enumerate}
+
+\end{definition}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
