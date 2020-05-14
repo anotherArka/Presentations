@@ -1,4 +1,4 @@
-\documentclass[11pt,compress]{beamer}
+\documentclass[10.5pt,compress]{beamer}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
@@ -49,13 +49,13 @@
 %\setbeamercovered{invisible}
 \begin{document}
 
-\begin{frame}\label{frame: titlepage}
+\begin{frame}\label{frame : titlepage}
 \titlepage
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Representable Functors}
-\begin{frame}\label{frame: representable functors}
+\begin{frame}\label{frame : representable functors}
 \frametitle{Representable Functors}
 
 \begin{definition}[Representation of a functor]
@@ -107,7 +107,7 @@ $X$ to its set of paths is represented by the unit interval $I$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}\label{frame : eg of contra rep func}
+\begin{frame}[fragile]\label{frame : eg of contra rep func}
 
 \frametitle{Examples}
 
@@ -121,7 +121,14 @@ $\mathbf{2} = \{\top, \bot\}$. That is $Hom(X,\mathbf{2}) \cong P(X)$.
 \item[$\blacktriangleright$] 
 The functor $\mathcal{O} : Top^{op} \to Set$ which maps a topological space to its
 set of open subsets is represented by the Sierpienski space $S$.
-\[ Give diagram\]
+\begin{equation*}
+\begin{tikzpicture}
+\draw (2,2) ellipse (1cm and 0.6cm);
+\draw (1.6,2) circle (0.4cm);
+\draw[beamer@lightgray,fill = beamer@lightgray] (1.6,2) circle (0.07cm);
+\draw[beamer@lightgray,fill = beamer@lightgray] (2.4,2) circle (0.07cm);
+\end{tikzpicture}
+\end{equation*}
 
 \item[$\blacktriangleright$]
 The functor $D : Vect_K^{op} \to Set$ which maps a vector space to its dual is represented by
@@ -136,7 +143,7 @@ $K$, considered as a vector space on itself.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{The Yoneda Lemma}
-\begin{frame}
+\begin{frame}\label{frame : yoneda lemma}
 
 \begin{theorem}[The Yoneda lemma]
 \only<1>{
@@ -163,7 +170,7 @@ $\alpha_c(id_c)$, and is natural in both $c$ and $F$.\smallskip
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}[fragile]
+\begin{frame}[fragile]\label{frame : proof of covariant yoneda}
 \begin{proof}[Proof(Covariant case)]
 \color{beamer@mathtext}{
 \begin{equation*}
@@ -174,7 +181,7 @@ Fc \arrow[r,"Ff"] & Fd"
 \begin{tikzcd}
 id_c \arrow[r,"f*",mapsto] \arrow[d, "\alpha_c",mapsto] & 
 f \arrow[d, "\alpha_d"', mapsto] \\
-\alpha_c(id_c) \arrow[r,"Ff",mapsto] & \alpha_d(f)"
+\alpha_c(id_c) \arrow[r,"Ff",mapsto] & \alpha_d(f)
 \end{tikzcd}
 \end{equation*}
 }
@@ -183,7 +190,7 @@ f \arrow[d, "\alpha_d"', mapsto] \\
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}[fragile]
+\begin{frame}[fragile]\label{frame : naturality in the functor}
 \begin{proof}[Naturality in the functor]
 \[\beta : F \implies G \]
 \[\beta_*(\alpha) = \beta \circ \alpha \]
@@ -204,7 +211,7 @@ Nat(Hom(c,-),G) \arrow[r,"\Phi^G"] & Gc"
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}[fragile]
+\begin{frame}[fragile]\label{frame : naturality in the object}
 \begin{proof}[Naturality in the object]
 \[f : c \to d \]
 \[f^* : Hom(d,-) \implies Hom(c,-) \]
@@ -221,7 +228,7 @@ Nat(Hom(d,-),F) \arrow[r,"\Phi_d"] & Fd
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}[fragile]
+\begin{frame}[fragile]\label{frame : naturality in the object cont.}
 \begin{proof}[Naturality in the object]
 \color{beamer@mathtext}{
 \begin{equation*} 
@@ -241,7 +248,7 @@ $((f^*)^*(\alpha))_d(id_d)) =
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}[fragile]
+\begin{frame}[fragile]\label{frame : Natural transformations of hom-functors}
 \frametitle{Natural transformations of $Hom$-functors}
 
 For $f : c \to d$
@@ -269,7 +276,7 @@ One can similarly define $f^* : Hom(d,-) \implies Hom(c,-)$.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{The Yoneda Embedding}
-\begin{frame}[fragile]
+\begin{frame}[fragile]\label{frame : the yoneda embedding}
 
 \frametitle{The Yoneda Embedding}
 
@@ -292,7 +299,7 @@ The following define full and faithful embeddings:
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}
+\begin{frame}\label{frame : proof of faithfulness}
 \begin{proof}[Proof of faithfulness]
 For $f, g : c \to d$, $f_* = g_*$ implies 
  \[f = (f_*)_c(id_c) = (g_*)_c(id_c) = g \]  
@@ -302,7 +309,7 @@ For $f, g : c \to d$, $f_* = g_*$ implies
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}[fragile]
+\begin{frame}[fragile]\label{frame : proof of fullness}
 \begin{proof}[Proof of fullness]
 Using the Yoneda lemma with $F = Hom(-,d)$ we get
 \[ \Phi^{Hom(-,d)}_c : Hom(c,d) \cong Nat(Hom(-,c), Hom(-,d)). \]
@@ -311,7 +318,7 @@ Using the Yoneda lemma with $F = Hom(-,d)$ we get
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Consequences}
+\section{Consequences}\label{frame : uniqueness of representations}
 \begin{frame}
 \frametitle{Uniqueness of representations}
 
@@ -322,7 +329,7 @@ isomorphism $f : c \to d$ giving this particular natural isomorphism.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\begin{frame}[fragile]
+\begin{frame}[fragile]\label{frame : alt proof of Cayley's theorem}
 
 \frametitle{An alternate proof of Cayley's theorem}
 \begin{block}{Any group is isomorphic to a subgroup of a permutation group}
@@ -349,7 +356,7 @@ Hom(*,*) \arrow[r,"g^*"] & Hom(*,*)
 
 
 
-\begin{frame}
+\begin{frame}\label{frame : properties of C hat}
 \frametitle{Some nice properties of $\widehat{C} = Set^{C^{op}}$}
 
 \begin{enumerate}
