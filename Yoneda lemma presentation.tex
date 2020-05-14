@@ -241,25 +241,32 @@ $((f^*)^*(\alpha))_d(id_d)) =
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\begin{frame}[fragile]
+\frametitle{Natural transformations of $Hom$-functors}
 
-\section{Consequences}
-
-\begin{frame}
-
-\begin{block}{An alternate proof of Cayley's theorem}
-Write the proof
-\end{block}	
-	
+For $f : c \to d$
+Define $f_* : Hom(-,c) \implies Hom(-,d)$ as
+\[ (f_*)_b = g \mapsto (f \circ g) : Hom(b,c) \to Hom(b,d) \]
+Then if $h : a \to b$, the following commutative diagram says $f_*$ 
+is a natural transformation
+\color{beamer@mathtext}{
+\begin{equation*}
+\begin{tikzcd}
+Hom(b,c) \arrow[r,"- \circ h"] \arrow[d, "(f_*)_b"] & 
+Hom(a,c) \arrow[d, "(f_*)_a"'] \\
+Hom(b,d) \arrow[r,"- \circ h"] & Hom(a,d)
+\end{tikzcd}\hspace{20pt}
+\begin{tikzcd}
+g \arrow[r] \arrow[d] & g \circ h \arrow[d] \\
+f \circ g \arrow[r] & f \circ g \circ h
+\end{tikzcd}
+\end{equation*}}
+\color{beamer@lightgray}{
+One can similarly define $f^* : Hom(d,-) \implies Hom(c,-)$.
+}
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}
-\frametitle{Uniqueness of representations}
-
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{The Yoneda Embedding}
 \begin{frame}[fragile]
@@ -280,11 +287,66 @@ The following define full and faithful embeddings:
     c \arrow[r, mapsto] \arrow[d, "f" '] & Hom(c,-)  \\
     d \arrow[r, mapsto] & Hom(d,-)	\arrow[u, "f_*" '] 
 \end{tikzcd}
-\end{equation*}
-}
+\end{equation*}}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\begin{proof}[Proof of faithfulness]
+For $f, g : c \to d$, $f_* = g_*$ implies 
+ \[f = (f_*)_c(id_c) = (g_*)_c(id_c) = g \]  
+
+\end{proof}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+\begin{proof}[Proof of fullness]
+Using the Yoneda lemma with $F = Hom(-,d)$ we get
+\[ \Phi^{Hom(-,d)}_c : Hom(c,d) \cong Nat(Hom(-,c), Hom(-,d)). \]
+\end{proof}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Consequences}
+\begin{frame}
+\frametitle{Uniqueness of representations}
+
+If $Hom(c,-) \cong F \cong Hom(d,-)$ then using Yoneda lemma there is an unique
+isomorphism $f : c \to d$ giving this particular natural isomorphism.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}[fragile]
+
+\frametitle{An alternate proof of Cayley's theorem}
+\begin{block}{Any group is isomorphic to a subgroup of a permutation group}
+\smallskip
+Consider a group $G$ as a category $BG$ with a single object $*$, and morphisms $g \in G$ with 
+multiplication as composition. Using the Yoneda embedding each $g \in G$ 
+induces an automorphism of $Hom(*,*) = G$. But functoriality and faithfulness implies 
+that $g \mapsto g*$ is a group monomorphism. So $G$ is a subgroup of the
+permutation group of $Hom(*,*)$. 
+\color{beamer@mathtext}{
+\begin{equation*} 
+\begin{tikzcd}
+* \arrow[r,"g"] \arrow[d,dashed] & * \arrow[d, dashed] \\
+Hom(*,*) \arrow[r,"g^*"] & Hom(*,*)
+\end{tikzcd}
+\end{equation*}}
+
+
+\end{block}	
+	
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 
 \begin{frame}
