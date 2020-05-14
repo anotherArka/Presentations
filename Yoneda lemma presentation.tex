@@ -1,4 +1,4 @@
-\documentclass[10pt,compress]{beamer}
+\documentclass[11pt,compress]{beamer}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
@@ -143,7 +143,7 @@ $K$, considered as a vector space on itself.
 For a locally small category $C$ and a covariant functor $F : C \to Set$, 
 there is a bijection
 \textcolor{beamer@mathtext}{
-\[ Y_c : Nat(Hom(c,-), F) \cong Fc .\]
+\[ \Phi_c^F : Nat(Hom(c,-), F) \cong Fc .\]
 }
 It maps a natural transformation $\alpha : Hom(c,-) \implies F$ to the element 
 $\alpha_c(id_c)$, and is natural in both $c$ and $F$.\smallskip
@@ -152,7 +152,7 @@ $\alpha_c(id_c)$, and is natural in both $c$ and $F$.\smallskip
 Dually, for a locally small category $C$ and a contravariant functor $F : C \to Set$, 
 there is a bijection
 \textcolor{beamer@mathtext}{
-\[ Y_c : Nat(Hom(-,c), F) \cong Fc .\]
+\[ \Phi_c^F : Nat(Hom(-,c), F) \cong Fc .\]
 }
 It maps a natural transformation $\alpha : Hom(-,c) \implies F$ to the element 
 $\alpha_c(id_c)$, and is natural in both $c$ and $F$.\smallskip
@@ -161,8 +161,105 @@ $\alpha_c(id_c)$, and is natural in both $c$ and $F$.\smallskip
 
 
 \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+\begin{proof}[Proof(Covariant case)]
+\color{beamer@mathtext}{
+\begin{equation*}
+\begin{tikzcd}
+Hom(c,c) \arrow[r,"f*"] \arrow[d, "\alpha_c"] & Hom(c,d) \arrow[d, "\alpha_d"'] \\
+Fc \arrow[r,"Ff"] & Fd"
+\end{tikzcd} 
+\begin{tikzcd}
+id_c \arrow[r,"f*",mapsto] \arrow[d, "\alpha_c",mapsto] & 
+f \arrow[d, "\alpha_d"', mapsto] \\
+\alpha_c(id_c) \arrow[r,"Ff",mapsto] & \alpha_d(f)"
+\end{tikzcd}
+\end{equation*}
+}
+\end{proof}
+\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+\begin{proof}[Naturality in the functor]
+\[\beta : F \implies G \]
+\[\beta_*(\alpha) = \beta \circ \alpha \]
+\color{beamer@mathtext}{
+\begin{equation*}
+\begin{tikzcd}
+Nat(Hom(c,-),F) \arrow[r,"\Phi^F"] \arrow[d, "\beta_*"] & Fc \arrow[d, "\beta_c"'] \\
+Nat(Hom(c,-),G) \arrow[r,"\Phi^G"] & Gc"
+\end{tikzcd} 
+\begin{tikzcd}
+\alpha \arrow[r,"\Phi^F",mapsto] \arrow[d, "\beta_*",mapsto] & 
+\alpha_c(id_c) \arrow[d, "\beta_c"', mapsto] \\
+\beta \circ \alpha \arrow[r,"\Phi^G",mapsto] & \beta_c \circ \alpha_c (id_c)
+\end{tikzcd}
+\end{equation*}
+}
+\end{proof}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+\begin{proof}[Naturality in the object]
+\[f : c \to d \]
+\[f^* : Hom(d,-) \implies Hom(c,-) \]
+\[(f^*)^* : Nat(Hom(c,-),F) \longrightarrow Nat(Hom(d,-),F) \]
+\color{beamer@mathtext}{
+\begin{equation*}
+\begin{tikzcd}
+Nat(Hom(c,-),F) \arrow[r,"\Phi_c"] \arrow[d, "(f^*)^*"] & Fc \arrow[d, "Ff"'] \\
+Nat(Hom(d,-),F) \arrow[r,"\Phi_d"] & Fd
+\end{tikzcd}
+\end{equation*}}
+\end{proof}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+\begin{proof}[Naturality in the object]
+\color{beamer@mathtext}{
+\begin{equation*} 
+\begin{tikzcd}
+\alpha \arrow[r,"\Phi_c",mapsto] \arrow[d, "(f^*)^*",mapsto] & 
+\alpha_c(id_c) \arrow[d, "Ff"', mapsto] \\
+(f^*)^*(\alpha) \arrow[r,"\Phi_d",mapsto] & 
+((f^*)^*(\alpha))_d(id_d)) = Ff(\alpha_c(id_c))
+\end{tikzcd}
+\end{equation*}}
+\color{beamer@lightgray}{
+$((f^*)^*(\alpha))_d(id_d)) =
+ (\alpha_d \circ f^*)(id_d) = 
+  \alpha_d(f) = Ff(\alpha_c(id_c))$}
+\end{proof}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Consequences}
+
+\begin{frame}
+
+\begin{block}{An alternate proof of Cayley's theorem}
+Write the proof
+\end{block}	
+	
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Uniqueness of representations}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{The Yoneda Embedding}
 \begin{frame}[fragile]
@@ -187,17 +284,8 @@ The following define full and faithful embeddings:
 }
 \end{frame}
 
-\section{Consequences}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}
-
-\begin{block}{An alternate proof of Cayley's theorem}
-Write the proof
-\end{block}	
-	
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
 \frametitle{Some nice properties of $\widehat{C} = Set^{C^{op}}$}
@@ -206,7 +294,6 @@ Write the proof
 
 \item[$\blacktriangleright$]
 $\widehat{C}$ has small limits and co-limits. For a small diagram $F : I \to \widehat{C}$ 
-
 \textcolor{beamer@mathtext}{
 \[ (\lim_{\to} F(i))(U) = (\lim_{\to}F(i)(U)) \]
 }
@@ -214,7 +301,6 @@ Specifically $\widehat{C}$ has products and co-products indexed over a set.
 
 \item[$\blacktriangleright$]
 $\widehat{C}$ has exponentials when $C$ is small. For $A, B : C^{op} \to Set$ we have
-
 \textcolor{beamer@mathtext}{
 \[ B^A(I) \cong Nat(Y(I), B^A) \cong Nat(Y(I) \times A, B) \]
 }
@@ -224,9 +310,11 @@ Since it is well formed, this actually gives a definition of the exponential.
 
 \end{enumerate}
 
-
-
-
 \end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
 
 \end{document}
