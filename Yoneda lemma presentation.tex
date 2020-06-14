@@ -354,21 +354,19 @@ Hom(*,*) \arrow[r,"g^*"] & Hom(*,*)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-
 \begin{frame}\label{frame : properties of C hat}
 \frametitle{Some nice properties of $\widehat{C} = Set^{C^{op}}$}
 
-\begin{enumerate}
-
-\item[$\blacktriangleright$]
+\only<1>{
 $\widehat{C}$ has small limits and co-limits. For a small diagram $F : I \to \widehat{C}$ 
 \textcolor{beamer@mathtext}{
 \[ (\lim_{\to} F(i))(U) = (\lim_{\to}F(i)(U)) \]
 }
 Specifically $\widehat{C}$ has products and co-products indexed over a set.
+And hence also pullbacks, pushouts and equalizers.
+}
 
-\item[$\blacktriangleright$]
+\only<2>{
 $\widehat{C}$ has exponentials when $C$ is small. For $A, B : C^{op} \to Set$ we have
 \textcolor{beamer@mathtext}{
 \[ B^A(I) \cong Nat(Y(I), B^A) \cong Nat(Y(I) \times A, B) \]
@@ -376,13 +374,81 @@ $\widehat{C}$ has exponentials when $C$ is small. For $A, B : C^{op} \to Set$ we
 The first isomorphism follows directly from the Yoneda lemma.
 The second isomorphism follows if we assume that exponentials exists. 
 Since it is well formed, this actually gives a definition of the exponential.
+}
 
-\end{enumerate}
 
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\begin{frame}
+\frametitle{One special case}\label{frame : alt defn of reals}
+
+Take $C = (\mathbb{Q}, \leq)$. Instead of $Set$ take $\mathbf{2} = \{\emptyset, \{\emptyset\}\}$.
+Then $2^{C^{op}} \cong \mathbb{R}$.
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]\label{frame : picking an element}
+\frametitle{Set like constructions}
+
+\begin{block}{Picking an element}
+\color{beamer@mathtext}{
+\begin{equation*} 
+\begin{tikzcd}
+1 \arrow[r,"a"] \arrow[rd,"f(a)" '] & A \arrow[d,"f"] \\
+ & B
+\end{tikzcd}
+\end{equation*}}
+\end{block}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]\label{frame : union and intersection}
+\frametitle{Set like constructions}
+
+\begin{block}{Union is same as co-product. Intersection can be thought as the following
+pullback diagram}
+\color{beamer@mathtext}{
+\begin{equation*} 
+\begin{tikzcd}
+A\cap B \arrow[r,dashrightarrow] \arrow[d,dashrightarrow] 
+\arrow[dr, phantom,"\lrcorner", very near start]
+& A \arrow[d,"i_A"] \\
+B \arrow[r,"i_B"] & A\cup B
+\end{tikzcd}
+\end{equation*}}
+\end{block}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]\label{frame : subsets}
+\frametitle{Set like constructions}
+
+\begin{block}{Subsets can be thought as the following pullback diagram}
+\color{beamer@mathtext}{
+\begin{equation*} 
+\begin{tikzcd}
+A \arrow[r,dashrightarrow] \arrow[d,dashrightarrow] 
+\arrow[dr, phantom,"\lrcorner", very near start]
+& 1 \arrow[d] \\
+X \arrow[r,"\mathcal{X}_A"] & 2
+\end{tikzcd}
+\end{equation*}}
+\end{block}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
