@@ -450,6 +450,89 @@ X \arrow[r,"\mathcal{X}_A"] & 2
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\begin{frame}[fragile]\label{frame : pullback}
 
+\frametitle{Pullback}
+
+\color{beamer@mathtext}{
+\begin{equation*}
+\begin{tikzcd}
+R
+\arrow[drr, bend left, "x"]
+\arrow[ddr, bend right, "y"]
+\arrow[dr, "\exists !", dashrightarrow] & & \\
+& P \arrow[r, "p"] \arrow[d, "q"]
+& X \arrow[d, "f"] \\
+& Y \arrow[r, "g"]
+& Z
+\end{tikzcd}
+\end{equation*}}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]\label{frame : pushout}
+
+\frametitle{Pushout}
+
+\color{beamer@mathtext}{
+\begin{equation*}
+\begin{tikzcd}
+Z \arrow[r, "p"] \arrow[d, "q"]
+& X \arrow[d, "f"] \arrow[ddr, bend left, "x"] \\
+Y \arrow[r, "g"] \arrow[drr, bend right, "y"]
+& P \arrow[dr, "\exists !", dashrightarrow] \\
+& & R
+\end{tikzcd}
+\end{equation*}}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]\label{frame : limit}
+
+\frametitle{Limit}
+
+\color{beamer@mathtext}{
+\begin{equation*}
+\begin{tikzcd}
+& S \arrow[d,dashrightarrow,"\exists !"] 
+\arrow[ddl,bend right, "s_a"]
+\arrow[ddr,bend left, "s_b"]
+& \\
+& lim(F) 
+\arrow[dl,"\lambda_a"]
+\arrow[dr,"\lambda_b"]
+& \\
+Fa \arrow[rr,"Ff"] & & Fb
+\end{tikzcd}
+\end{equation*}}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]\label{frame : colimit}
+
+\frametitle{Colimit}
+
+\color{beamer@mathtext}{
+\begin{equation*}
+\begin{tikzcd}
+Fa \arrow[rr,"Ff"] 
+\arrow[ddr,bend right, "t_a"]
+\arrow[dr,"\lambda_a"]
+& & Fb 
+\arrow[ddl,bend left, "t_b"] 
+\arrow[dl,"\lambda_b"] \\
+& colim(F) \arrow[d,dashrightarrow,"\exists !"] & \\
+& T &
+\end{tikzcd}
+\end{equation*}}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \end{document}
