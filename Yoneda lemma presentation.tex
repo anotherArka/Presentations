@@ -385,7 +385,7 @@ Since it is well formed, this actually gives a definition of the exponential.
 \frametitle{One special case}\label{frame : alt defn of reals}
 
 Take $C = (\mathbb{Q}, \leq)$. Instead of $Set$ take $\mathbf{2} = \{\emptyset, \{\emptyset\}\}$.
-Then $2^{C^{op}} \cong \mathbb{R}$.
+Then $2^{C^{op}} \cong \mathbb{R} \cup \{+\infty,-\infty\}$.
 
 \end{frame}
 
@@ -409,23 +409,23 @@ Then $2^{C^{op}} \cong \mathbb{R}$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}[fragile]\label{frame : union and intersection}
-\frametitle{Set like constructions}
+%\begin{frame}[fragile]\label{frame : union and intersection}
+%\frametitle{Set like constructions}
+%
+%\begin{block}{Union is same as co-product. Intersection can be thought as the following
+%pullback diagram}
+%\color{beamer@mathtext}{
+%\begin{equation*} 
+%\begin{tikzcd}
+%A\cap B \arrow[r,dashrightarrow] \arrow[d,dashrightarrow] 
+%arrow[dr, phantom,"\lrcorner", very near start]
+% A \arrow[d,"i_A"] \\
+%B \arrow[r,"i_B"] & A\cup B
+%\end{tikzcd}
+%\end{equation*}}
+%\end{block}
 
-\begin{block}{Union is same as co-product. Intersection can be thought as the following
-pullback diagram}
-\color{beamer@mathtext}{
-\begin{equation*} 
-\begin{tikzcd}
-A\cap B \arrow[r,dashrightarrow] \arrow[d,dashrightarrow] 
-\arrow[dr, phantom,"\lrcorner", very near start]
-& A \arrow[d,"i_A"] \\
-B \arrow[r,"i_B"] & A\cup B
-\end{tikzcd}
-\end{equation*}}
-\end{block}
-
-\end{frame}
+%\end{frame}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
