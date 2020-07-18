@@ -123,28 +123,38 @@ model computation.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}\label{frame : lambda calculus}
+\begin{frame}\label{frame : terms of lambda calculus}
 
-\frametitle{Lambda Calculus}
+\frametitle{Untyped Lambda Calculus}
 
 \pause
 \begin{block}{Terms}
 \[ M := x \in Var\ |\ (M_1\ M_2)\ | \lambda x . M \]
 \end{block}
+\end{frame}
 
-\pause
-\begin{block}{Evaluation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}\label{frame : rules of lambda calculus}
+
+\frametitle{Untyped Lambda Calculus}
+\begin{block}{Evaluation($\beta$-reduction)}
 \[ ((\lambda x.M)\ y) \to M[x/y] \]
 \[ \text{If }M_1 \to M_2 \text{ then }(P\ M_1) \to (P\ M_2) \]
 \[ \text{If }M_1 \to M_2 \text{ then }(M_1\ N) \to (M_2\ N) \]
 \[ \text{If }M_1 \to M_2 \text{ then }(\lambda x.M_1) \to (\lambda M. t_2) \]
+\end{block}
+\pause
+\begin{block}{$\alpha$-conversion}
+Terms are considered equivalent upto renaming of bound variables.
+$\lambda x.M \equiv \lambda y.M[x/y]$.
 \end{block}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}\label{frame : examples1 of terms}
-\frametitle{Lambda Calculus}
+\frametitle{Untyped Lambda Calculus}
 
 \begin{block}{Examples of terms}
 \pause \[ I := \lambda x.x \]
@@ -157,7 +167,7 @@ model computation.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}\label{frame : examples2 of terms}
-\frametitle{Lambda Calculus}
+\frametitle{Untyped Lambda Calculus}
 
 \begin{block}{Examples of terms}
 \pause \[ K := \lambda x.\lambda y. x \]
@@ -169,7 +179,7 @@ model computation.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}\label{frame : notation}
-\frametitle{Lambda Calculus}
+\frametitle{Untyped Lambda Calculus}
 
 \begin{block}{Notation}
 From now on we will sometimes write $x_1 \dots x_n$ to mean $(\dots((x_1\ x_2)\ x_3) \dots \ x_n)$.
@@ -178,7 +188,7 @@ From now on we will sometimes write $x_1 \dots x_n$ to mean $(\dots((x_1\ x_2)\ 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}\label{frame : example of evaluation}
-\frametitle{Lambda Calculus}
+\frametitle{Untyped Lambda Calculus}
 
 \begin{block}{Examples of evaluations}
 \pause
@@ -195,12 +205,13 @@ From now on we will sometimes write $x_1 \dots x_n$ to mean $(\dots((x_1\ x_2)\ 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}\label{frame : free and bound variables}
-\frametitle{Lambda Calculus}
+\frametitle{Untyped Lambda Calculus}
 \begin{block}{Free and bound variables}
 The collection of free variables in a term $M$, written as $FV(M)$, is defined as:
+\textcolor{beamer@mathtext}{
 \[ FV(x) := \{x\} \]
 \[ FV((M N)) := FV(M)\cup FV(N) \]
-\[ FV(\lambda x.M) := FV(M)\setminus \{x\} \]
+\[ FV(\lambda x.M) := FV(M)\setminus \{x\} \]}
 \pause
 A variable occuring in $M$ is bound if it is not free.
 \end{block}
@@ -210,35 +221,50 @@ A variable occuring in $M$ is bound if it is not free.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}\label{frame : variable capture}
-\frametitle{Lambda Calculus}
+\frametitle{Untyped Lambda Calculus}
 
 \begin{block}{Some coventions}
-Terms should be equivalent upto renaming of bound variables($\alpha$-conversion).
-\textcolor{beamer@mathtext}{\[ \lambda x.M \equiv \lambda y.M[x/y] \]}
+Problems like the following can occur while evaluating a term
+\textcolor{beamer@mathtext}{
+\[ (\lambda x.\lambda y.x y) y z \to (\lambda y.y y) z \to z \]}
 \pause
-But this can create confusion such as
-\textcolor{beamer@mathtext}{\[ \lambda x.x y \equiv \lambda y. y y\]}
-So we assume bound variables to be disjoint from free variables. 
+To take care of this, we rename the bound variables accordingly so that in $(M\ N)$,
+free variables of $N$ don't coincide with bound variables of $M$.
 \end{block}
 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[fragile]\label{frame : Church Rosser Theorem}
-\frametitle{Lambda Calculus}
+\frametitle{Untyped Lambda Calculus}
 
 \begin{theorem}[Church-Rosser]
 Let $\twoheadrightarrow$ be the reflexive transitive closure of $\to$.
 If $P \twoheadrightarrow Q_1$ and $P \twoheadrightarrow Q_2$,
 then there is an $R$ such that $Q_1 \twoheadrightarrow R$ and $Q_2 \twoheadrightarrow R$.
 \end{theorem}
+\color{beamer@mathtext}{
 \begin{equation*}
 \begin{tikzcd}
 & P \arrow[rd,twoheadrightarrow] \arrow[ld,twoheadrightarrow] & \\
 Q_1 \arrow[rd,dashed,twoheadrightarrow] & & Q_2 \arrow[ld,dashed,twoheadrightarrow] \\
 & R &
 \end{tikzcd}
-\end{equation*}
+\end{equation*}}
 \end{frame}
-
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}\label{frame : power of lambda}
+\frametitle{Untyped Lambda Calculus}
+\begin{enumerate}
+\pause
+\item[$\blacktriangleright$] We have already seen Church-encodings of natural numbers.
+\pause
+\item[$\blacktriangleright$] Similarly we can define addition, multiplication and exponentiation.
+\pause
+\item[$\blacktriangleright$] We can also define datatypes such as lists and trees, and operations on them.
+\pause
+\item[$\blacktriangleright$] In fact using lambda calculus we can define any function
+which can be computed using a Turing Machine.
+\end{enumerate}
+\end{frame}
 \end{document}
+
