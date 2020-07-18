@@ -1,0 +1,244 @@
+\documentclass[14pt,compress]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{tikz}
+\usetikzlibrary{patterns}
+\usepackage{tikz-cd}
+%\tikzset{commutative diagrams/arrow style=math font}
+
+% Beamer commands
+\title{Introduction to Type Theory and Lambda Calculus}
+\date{}
+%\setbeamertemplate{navigation symbols}{}
+%\setbeamertemplate{blocks}[rounded][shadow=false]
+%\usecolortheme{orchid}
+% TikZ options
+\usetikzlibrary{arrows,shapes}
+\useoutertheme{split}
+\useoutertheme[footline=authortitle]{miniframes}
+%\useinnertheme{circles}
+%\usecolortheme{whale}
+%\usecolortheme{orchid}
+
+\definecolor{beamer@blendedblue}{rgb}{0.3,0.5,0.8}
+\definecolor{beamer@myviolet}{rgb}{0.7,0.2,0.5}
+\definecolor{beamer@deepblue}{rgb}{0.5,0.5,0.7}
+\definecolor{beamer@lightgray}{rgb}{0.5,0.7,0.5}
+\definecolor{beamer@mybrown}{rgb}{0.3,0.3,0.2}
+\definecolor{beamer@mathtext}{rgb}{0.9,0.5,0.4}
+\definecolor{beamer@header}{rgb}{0.4,0.1,0.1}
+
+\setbeamercolor{background canvas}{fg=white, bg=black}
+\setbeamercolor{normal text}{fg=beamer@lightgray,bg=black}
+\setbeamercolor{alerted text}{fg=red}
+\setbeamercolor{example text}{fg=green!50!black}
+\setbeamercolor{miniframes}{fg=red,bg=white}
+\setbeamercolor{structure}{fg=beamer@deepblue}
+\setbeamercolor{titlelike}{fg=magenta}
+\setbeamercolor{frametitle}{fg=beamer@myviolet}
+\setbeamercolor{title}{fg=beamer@myviolet}
+\setbeamercolor{item}{fg=beamer@mybrown}
+\setbeamercolor{section in head/foot}{fg=white,bg=beamer@header}
+
+\setbeamerfont{framesubtitle}{size=10pt}
+
+
+\mode
+<all>
+
+%\setbeamercovered{invisible}
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}\label{frame : titlepage}
+\titlepage
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}\label{frame : what is a type theory}
+\frametitle{What is a Type Theory?}
+
+\begin{enumerate}
+\pause
+\item[$\blacktriangleright$] A (programming)language.\only<4->{\textit{\textcolor{beamer@mathtext}{
+$\leftarrow$ Let's see this first}}}
+\pause
+\item[$\blacktriangleright$] A foundational system.
+\end{enumerate}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}\label{frame : what is a language}
+\frametitle{What is a language?}
+
+\begin{enumerate}
+\pause
+\item[$\blacktriangleright$] Alphabets and symbols.
+\pause
+\item[$\blacktriangleright$] Words(combination of alphabets).
+\pause
+\item[$\blacktriangleright$] Semi-sentences\\(combination of words and symbols).
+\pause
+\item[$\blacktriangleright$] Grammer(which semi-sentences are sentences).
+\pause
+\item[$\blacktriangleright$] Informal meaning.
+\end{enumerate}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}\label{frame : purpose of a language}
+\frametitle{What is a language?}
+
+\begin{enumerate}
+\item[$\blacktriangleright$] Sometimes languages are designed for specfic purposes.
+\pause
+\item[$\blacktriangleright$] One of the earlier motivation to create a type theory was to
+model computation. 
+\end{enumerate}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}\label{frame : what is computation}
+
+\frametitle{What is Computation?}
+\begin{enumerate}
+\pause
+\item[$\blacktriangleright$] Change of state(Turing Machines).
+\pause
+\item[$\blacktriangleright$] Function application(lambda calculus). 
+\end{enumerate}
+\pause
+\textcolor{beamer@mathtext}{These two modes of computation are equivalent(Church-Turing thesis).}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}\label{frame : lambda calculus}
+
+\frametitle{Lambda Calculus}
+
+\pause
+\begin{block}{Terms}
+\[ M := x \in Var\ |\ (M_1\ M_2)\ | \lambda x . M \]
+\end{block}
+
+\pause
+\begin{block}{Evaluation}
+\[ ((\lambda x.M)\ y) \to M[x/y] \]
+\[ \text{If }M_1 \to M_2 \text{ then }(P\ M_1) \to (P\ M_2) \]
+\[ \text{If }M_1 \to M_2 \text{ then }(M_1\ N) \to (M_2\ N) \]
+\[ \text{If }M_1 \to M_2 \text{ then }(\lambda x.M_1) \to (\lambda M. t_2) \]
+\end{block}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}\label{frame : examples1 of terms}
+\frametitle{Lambda Calculus}
+
+\begin{block}{Examples of terms}
+\pause \[ I := \lambda x.x \]
+\pause \[ c_0 := \lambda f.\lambda x. x \]
+\pause \[ c_{n+1} := \lambda f.\lambda x.(f\ ((c_n\ f)\ x)) \]
+\pause \[ succ := \lambda n. \lambda f. \lambda x.(f\ ((n\ f)\ x)) \]
+\end{block}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}\label{frame : examples2 of terms}
+\frametitle{Lambda Calculus}
+
+\begin{block}{Examples of terms}
+\pause \[ K := \lambda x.\lambda y. x \]
+\pause \[ L := \lambda x.\lambda y. y \]
+\pause \[ S := \lambda x. \lambda y. \lambda z.((x\ z)(y\ z))\]
+\pause \[ Y := \lambda x.(x\ x) \]
+\end{block}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}\label{frame : notation}
+\frametitle{Lambda Calculus}
+
+\begin{block}{Notation}
+From now on we will sometimes write $x_1 \dots x_n$ to mean $(\dots((x_1\ x_2)\ x_3) \dots \ x_n)$.
+\end{block} 
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}\label{frame : example of evaluation}
+\frametitle{Lambda Calculus}
+
+\begin{block}{Examples of evaluations}
+\pause
+\[ (I\ x) \to x \]
+\pause
+\[ (succ\ c_n) \to c_{n+1} \]
+\pause
+\[ SKpq \to Kq(pq) \to q\]
+\pause
+\[ (\lambda x.xx)(\lambda x.xx) \to (\lambda x.xx)(\lambda x.xx) \]
+\end{block}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}\label{frame : free and bound variables}
+\frametitle{Lambda Calculus}
+\begin{block}{Free and bound variables}
+The collection of free variables in a term $M$, written as $FV(M)$, is defined as:
+\[ FV(x) := \{x\} \]
+\[ FV((M N)) := FV(M)\cup FV(N) \]
+\[ FV(\lambda x.M) := FV(M)\setminus \{x\} \]
+\pause
+A variable occuring in $M$ is bound if it is not free.
+\end{block}
+
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}\label{frame : variable capture}
+\frametitle{Lambda Calculus}
+
+\begin{block}{Some coventions}
+Terms should be equivalent upto renaming of bound variables($\alpha$-conversion).
+\textcolor{beamer@mathtext}{\[ \lambda x.M \equiv \lambda y.M[x/y] \]}
+\pause
+But this can create confusion such as
+\textcolor{beamer@mathtext}{\[ \lambda x.x y \equiv \lambda y. y y\]}
+So we assume bound variables to be disjoint from free variables. 
+\end{block}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]\label{frame : Church Rosser Theorem}
+\frametitle{Lambda Calculus}
+
+\begin{theorem}[Church-Rosser]
+Let $\twoheadrightarrow$ be the reflexive transitive closure of $\to$.
+If $P \twoheadrightarrow Q_1$ and $P \twoheadrightarrow Q_2$,
+then there is an $R$ such that $Q_1 \twoheadrightarrow R$ and $Q_2 \twoheadrightarrow R$.
+\end{theorem}
+\begin{equation*}
+\begin{tikzcd}
+& P \arrow[rd,twoheadrightarrow] \arrow[ld,twoheadrightarrow] & \\
+Q_1 \arrow[rd,dashed,twoheadrightarrow] & & Q_2 \arrow[ld,dashed,twoheadrightarrow] \\
+& R &
+\end{tikzcd}
+\end{equation*}
+\end{frame}
+
+
+\end{document}
