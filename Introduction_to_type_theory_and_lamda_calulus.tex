@@ -268,6 +268,7 @@ which can be computed using a Turing Machine.
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Typed Lambda Calculus}
 \begin{frame}\label{frame : why types}
 \frametitle{Then Why Types?}
 For the same reason we write programs in C or Python instead of assembly or machine code.
@@ -343,14 +344,37 @@ A context $\Gamma$ is a (possibly empty) finite collection of typing judgements.
 \item[$\blacktriangleright$] \textcolor{beamer@mathtext}{Clarity of expression}.
 \pause
 \item[$\blacktriangleright$] \textcolor{beamer@mathtext}{Strong normalisation}
-  (every well-typed term evaluates to an unique normal form)
+  (every well-typed term evaluates to an unique normal form which can't be evaluated further)
 \pause
 \item[$\blacktriangleright$] \textcolor{beamer@mathtext}{Internal language of Cartesian-Closed Categories}
 (category with finite products and exponentials)   
 \end{enumerate}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Inductive Definitions}
+\begin{frame}\label{frame : Inductive definitions}
+\frametitle{Inductive Definitions}
+\pause
+We will see formal definitions later. But first,
+\pause
+\\
+\textcolor{beamer@mathtext}{
+\texttt{Let's TYPE!}}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Moving Further}
+\begin{frame}\label{frame : what's next}
+\frametitle{What's next?}
+\begin{enumerate}
+\item[$\blacktriangleright$] Universes
+\item[$\blacktriangleright$] Type families
+\item[$\blacktriangleright$] Recursive and inductive definitions
+\item[$\blacktriangleright$] Co-recursive and co-inductive definitions
+\item[$\blacktriangleright$] Identity types
+\item[$\blacktriangleright$] Functional extensionality and Univalence
+\end{enumerate}
 
 \end{frame}
-
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{document}
 

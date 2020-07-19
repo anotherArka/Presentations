@@ -42,7 +42,7 @@ data SSum : Type -> Type -> Type where
 
 -- Universal property holds :P   ------------------------------------------------
 ----------------------------------------------------------------------------------
-sum_fun : (left -> ty) -> (right -> ty) -> (SSum left right) -> ty
-sum_fun lf rf (inl x) = lf x
-sum_fun lf rf (inr y) = rf y
+universal_fun : (left -> ty) -> (right -> ty) -> (SSum left right) -> ty
+universal_fun lf rf (inl x) = lf x
+universal_fun lf rf (inr y) = rf y
 ----------------------------------------------------------------------------------
