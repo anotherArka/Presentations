@@ -2,7 +2,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
-\usepackage{tikz}
+\usepackage{tikz, upgreek}
 \usetikzlibrary{patterns}
 \usepackage{tikz-cd}
 %\tikzset{commutative diagrams/arrow style=math font}
@@ -270,10 +270,49 @@ which can be computed using a Turing Machine.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}\label{frame : why types}
 \frametitle{Then Why Types?}
-
 For the same reason we write programs in C or Python instead of assembly or machine code.
 Ease of expression and understanding. 
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}\label{frame : before we begin}
+\frametitle{Before We Begin}
+
+\begin{block}{Typing Judgement}
+We write $t : A$ to mean that the term $t$ has type $A$.
+\end{block}
+
+\begin{block}{Context}
+A context $\Gamma$ is a (possibly empty) finite collection of typing judgements.
+\end{block}
 
 \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}\label{frame : terms and types of simply typed lambda calculus}
+\frametitle{Simply Typed Lambda Calculus}
+
+\begin{block}{Types}
+\[ \tau := T\in \mathbb{B}\ |\ \tau _1 \to \tau _2 \] 
+\end{block}
+
+\begin{block}{Terms}
+\[ t := x \in Var\ |\ (t_1\ t_2)\ |\ \lambda x{:}\tau.t \]
+\end{block}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}\label{frame : rules of simply typed lambda calculus}
+\frametitle{Simply Typed Lambda Calculus}
+
+\begin{block}{Rules}
+\pause
+\[ \frac{x{:}\tau \in \Gamma}{\Gamma \vdash x{:}\tau} \]
+\pause
+\[ \frac{\Gamma, x{:}\tau \vdash {t}:\sigma}{(\lambda x{:}\tau.t) : (\tau \to \sigma)} \]
+\pause
+\[ \frac{\Gamma \vdash u{:}(\tau \to \sigma) \qquad \Gamma \vdash v{:}\tau}
+        {\Gamma \vdash (u\ v){:}\sigma} \]
+\end{block}
+\end{frame}
+
 \end{document}
 
