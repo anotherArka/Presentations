@@ -314,5 +314,43 @@ A context $\Gamma$ is a (possibly empty) finite collection of typing judgements.
 \end{block}
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}\label{frame : unit type}
+\frametitle{Some Additional Types}
+
+\begin{block}{Unit Type}
+\[ \frac{}{\Gamma \vdash \star {:} \mathbf{1}} \]
+\end{block}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}\label{frame : product type}
+\frametitle{Some Additional Types}
+
+\begin{block}{Product Type}
+\[ \frac{\Gamma \vdash a {:} A \qquad \Gamma \vdash b {:} B}
+        {\Gamma \vdash (a{,}b){:}A{\times} B} \]
+        
+\[ \frac{\Gamma \vdash x{:}A_1{\times} A_2}{\Gamma \vdash \pi_i(a){:}A_i} \]        
+\end{block}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}\label{frame : what did we gain}
+\frametitle{What did we gain?}
+\begin{enumerate}
+\pause
+\item[$\blacktriangleright$] \textcolor{beamer@mathtext}{Clarity of expression}.
+\pause
+\item[$\blacktriangleright$] \textcolor{beamer@mathtext}{Strong normalisation}
+  (every well-typed term evaluates to an unique normal form)
+\pause
+\item[$\blacktriangleright$] \textcolor{beamer@mathtext}{Internal language of Cartesian-Closed Categories}
+(category with finite products and exponentials)   
+\end{enumerate}
+
+\end{frame}
+
+
 \end{document}
 
