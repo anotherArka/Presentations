@@ -5,6 +5,7 @@
 \usepackage{tikz, upgreek}
 \usetikzlibrary{patterns}
 \usepackage{tikz-cd}
+\usepackage{pifont}
 %\tikzset{commutative diagrams/arrow style=math font}
 
 % Beamer commands
@@ -59,6 +60,17 @@
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Recap}
+\begin{frame}\label{frame : recap}
+\frametitle{Recap}
+\begin{enumerate}
+\item Untyped $\lambda$-calculus
+\item Simyply typed $\lambda$-calculus
+\item Unit type and product type
+\end{enumerate}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}\label{frame : judgemental equality}
 \frametitle{Judgemental Equality}
 
@@ -71,6 +83,7 @@ In addition to judgements of the form $a : A$, we now have a new kind of judgeme
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Inductive Types}
 \begin{frame}\label{frame : gen of Nat}
 \frametitle{The Type $\mathbb{N}$}
 
@@ -152,6 +165,38 @@ follows from the definition of the recursor.
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}\label{frame : unit type}
+\frametitle{The Unit Type}
+
+\begin{block}{Generator}
+\textcolor{beamer@mathtext}{
+\[ \star : \mathbf{1} \]}
+\end{block}
+\pause
+\begin{block}{Recursor}
+\textcolor{beamer@mathtext}{
+\[ rec_{\mathbf{1}}^C : C \to (\mathbf{1} \to C) \]
+\[ rec_{\mathbf{1}}^C(c,\star) :\equiv c \]}
+\end{block}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}\label{frame : void type}
+\frametitle{The Void Type}
+
+\begin{block}{Generator}
+\textcolor{beamer@mathtext}{
+None!}
+\end{block}
+\pause
+\begin{block}{Recursor}
+\textcolor{beamer@mathtext}{
+\[ rec_{\mathbf{0}}^C : \mathbf{0} \to C \]}
+\end{block}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}\label{frame : gen of tree}
 \frametitle{The Type of Binary Trees}
 
@@ -174,9 +219,61 @@ Homework!!
 \end{huge}
 
 \end{block}
-
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Proposition as Types}
+\begin{frame}\label{frame : checkpoint}
+\frametitle{Checkpoint Reached!!}
+
+\begin{enumerate}
+\pause
+\item
+Type theories as programming languages.
+\pause
+\textcolor{beamer@mathtext}
+{\begin{Large} \ding{51} \end{Large}}
+\pause
+\item
+Type theories as foundational systems.
+\textcolor{beamer@mathtext}
+{\begin{Large} ? \end{Large}}
+\end{enumerate}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}\label{frame : prop as types}
+\frametitle{Propositions as Types}
+
+\pause
+A proposition can be considered as a type $A$ with 
+the witnesses/proofs as its terms.
+\pause
+So to prove $A$ we need to show that 
+there is a term $a : A$.
+
+\pause
+\color{beamer@mathtext}
+\begin{table}
+\begin{tabular}{ c | c }
+
+\hline
+Propositions & Types\\ 
+\hline
+
+True & $\mathbf{1}$ \\
+
+False & $\mathbf{0}$ \\
+
+$A \wedge B$ & $A \times B$ \\
+
+$A \vee B$ & $A + B$ \\
+
+$A \implies B$ & $A \to B$ \\
+
+$\neg A$ & $A \to \mathbf{0}$ \\
+\end{tabular}
+\end{table}
+\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
