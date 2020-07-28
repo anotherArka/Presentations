@@ -1,0 +1,117 @@
+\documentclass[14pt,compress]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{tikz, upgreek}
+\usetikzlibrary{patterns}
+\usepackage{tikz-cd}
+%\tikzset{commutative diagrams/arrow style=math font}
+
+% Beamer commands
+\title{Inductive Types}
+\date{}
+%\setbeamertemplate{navigation symbols}{}
+%\setbeamertemplate{blocks}[rounded][shadow=false]
+%\usecolortheme{orchid}
+% TikZ options
+\usetikzlibrary{arrows,shapes}
+\useoutertheme{split}
+\useoutertheme[footline=authortitle]{miniframes}
+%\useinnertheme{circles}
+%\usecolortheme{whale}
+%\usecolortheme{orchid}
+
+\definecolor{beamer@blendedblue}{rgb}{0.3,0.5,0.8}
+\definecolor{beamer@myviolet}{rgb}{0.7,0.2,0.5}
+\definecolor{beamer@deepblue}{rgb}{0.5,0.5,0.7}
+\definecolor{beamer@lightgray}{rgb}{0.5,0.7,0.5}
+\definecolor{beamer@mybrown}{rgb}{0.3,0.3,0.2}
+\definecolor{beamer@mathtext}{rgb}{0.9,0.5,0.4}
+\definecolor{beamer@header}{rgb}{0.4,0.1,0.1}
+
+\setbeamercolor{background canvas}{fg=white, bg=black}
+\setbeamercolor{normal text}{fg=beamer@lightgray,bg=black}
+\setbeamercolor{alerted text}{fg=red}
+\setbeamercolor{example text}{fg=green!50!black}
+\setbeamercolor{miniframes}{fg=red,bg=white}
+\setbeamercolor{structure}{fg=beamer@deepblue}
+\setbeamercolor{titlelike}{fg=magenta}
+\setbeamercolor{frametitle}{fg=beamer@myviolet}
+\setbeamercolor{title}{fg=beamer@myviolet}
+\setbeamercolor{item}{fg=beamer@mybrown}
+\setbeamercolor{section in head/foot}{fg=white,bg=beamer@header}
+
+\setbeamerfont{framesubtitle}{size=10pt}
+
+
+\newcommand{\N}{\mathbb{N}}
+
+\mode
+<all>
+
+%\setbeamercovered{invisible}
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}\label{frame : titlepage}
+\titlepage
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}\label{frame : judgemental equality}
+\frametitle{Judgemental Equality}
+
+In addition to judgements of the form $a : A$, we now have a new kind of judgement
+\textcolor{beamer@mathtext}{
+\[ a \equiv b : A \]}
+\noindent which is read as
+\textcolor{beamer@mathtext}{``$a$ and $b$ are judgementally equal terms of type $A$''}.
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}\label{frame : gen of Nat}
+\frametitle{The Type $\mathbb{N}$}
+
+\begin{block}{Generators}
+\[ Z : \N \]
+\[ succ : \N \to \N \]
+\end{block}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}\label{frame : rec of Nat}
+\frametitle{The Type $\mathbb{N}$}
+
+\begin{block}{Recursor}
+\[ rec_{\N,C} : C \to (\N \to C \to C) \to (\N \to C) \]
+\[ rec_{\N,C}(c_0,c_s,Z) \equiv c_0 \]
+\[ rec_{\N,C}(c_0,c_s,(succ(n))) \equiv c_s(n, rec_{\N,C}(c_0,c_s,n)) \]
+\end{block}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}\label{frame : gen of co-product}
+\frametitle{Co-Product of Types}
+
+\begin{block}{Generators}
+\[ inl : A \to (A + B) \]
+\[ inr : B \to (A + B) \]
+\end{block}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}\label{frame : rec of co-product}
+\frametitle{Co-Product of Types}
+
+\begin{block}{Recursor}
+\[ rec_{A+B,C} : (A \to C) \to (B \to C) \to ((A + B) \to C) \]
+\[ rec_{A+B,C}(f,g,inl(a)) \equiv f(a) \]
+\[ rec_{A+B,C}(f,g,inr(b)) \equiv g(b) \]
+\end{block}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+
