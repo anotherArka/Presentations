@@ -49,6 +49,8 @@
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\tree}{\mathcal{BT}}
 \newcommand{\U}{\mathcal{U}}
+\newcommand{\R}{\mathbb{R}}
+
 
 \mode
 <all>
@@ -66,8 +68,8 @@
 \begin{frame}\label{frame : recap}
 \frametitle{Recap}
 \begin{enumerate}
-\item Untyped $\lambda$-calculus
-\item Simyply typed $\lambda$-calculus
+\item Untyped \textcolor{beamer@mathtext}{$\lambda$}-calculus
+\item Simyply typed \textcolor{beamer@mathtext}{$\lambda$}-calculus
 \item Unit type and product type
 \end{enumerate}
 \end{frame}
@@ -76,7 +78,8 @@
 \begin{frame}\label{frame : judgemental equality}
 \frametitle{Judgemental Equality}
 
-In addition to judgements of the form $a : A$, we now have a new kind of judgement
+In addition to judgements of the form \textcolor{beamer@mathtext}{$a : A$},
+we now have a new kind of judgement
 \textcolor{beamer@mathtext}{
 \[ a \equiv b : A \]}
 \noindent which is read as
@@ -160,7 +163,8 @@ In addition to judgements of the form $a : A$, we now have a new kind of judgeme
 
 \pause
 \begin{block}{}
-Note that $\pi_1((a,b)) \equiv a$ and $\pi_2((a,b)) \equiv b$
+Note that \textcolor{beamer@mathtext}{$\pi_1((a,b)) \equiv a$} and
+\textcolor{beamer@mathtext}{$\pi_2((a,b)) \equiv b$}
 follows from the definition of the recursor.
 \end{block}
 
@@ -247,11 +251,11 @@ Type theories as foundational systems.
 \frametitle{Propositions as Types}
 
 \pause
-A proposition can be considered as a type $A$ with 
+A proposition can be considered as a type \textcolor{beamer@mathtext}{$A$} with 
 the witnesses/proofs as its terms.
 \pause
-So to prove $A$ we need to show that 
-there is a term $a : A$.
+So to prove \textcolor{beamer@mathtext}{$A$} we need to show that 
+there is a term \textcolor{beamer@mathtext}{$a : A$}.
 
 \pause
 \color{beamer@mathtext}
@@ -326,9 +330,9 @@ We consider a cumulative sequence of universes,
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}\label{frame : universes and type families}
+\begin{frame}\label{frame : type families}
 \frametitle{Type Families}
-Given a type $A$ and universe $\U$ a function $f : A \to \U$ is called a
+Given a type $A$ and universe $\U$ a function \textcolor{beamer@mathtext}{$f : A \to \U$} is called a
 \textcolor{beamer@mathtext}{type family}.
 
 \end{frame}
@@ -337,12 +341,15 @@ Given a type $A$ and universe $\U$ a function $f : A \to \U$ is called a
 \begin{frame}\label{frame : dependent function type}
 \frametitle{Dependent Function/Product Type}
 
-Given a type family \textcolor{beamer@mathtext}{$P : A \to \U $} we can form:
+\begin{enumerate}
+\item Given a type family \textcolor{beamer@mathtext}{$P : A \to \U $} we can form:
 The \textcolor{beamer@deepblue}{dependent function/product type}
-\textcolor{beamer@mathtext}{$\prod_{a : A} P(a)$}.\smallskip
+\textcolor{beamer@mathtext}{$\prod_{a : A} P(a)$}.
 
-\pause
+\item \pause
 This corresponds to the \textcolor{beamer@mathtext}{$\forall$} quantifier.
+
+\end{enumerate}
 
 \end{frame}
 
@@ -350,6 +357,34 @@ This corresponds to the \textcolor{beamer@mathtext}{$\forall$} quantifier.
 \begin{frame}\label{frame : dependent sum type}
 \frametitle{Dependent Sum Type}
 
+\begin{enumerate}
+
+\item Given a type family \textcolor{beamer@mathtext}{$P : A \to \U $} we can form:
+The \textcolor{beamer@deepblue}{dependent sum/co-product type}
+\textcolor{beamer@mathtext}{$\sum_{a : A} P(a)$}.\smallskip
+
+\pause
+\item This corresponds to the \textcolor{beamer@mathtext}{$\exists$} quantifier.
+\end{enumerate}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}\label{frame : topological example}
+\frametitle{A Topological Example}
+
+\begin{enumerate}
+\pause
+\item Consider \textcolor{beamer@mathtext}{$S^2 \subseteq \R^3$} as a type, i.e.,
+the terms of this type are points in \textcolor{beamer@mathtext}{$S^2$}.      
+\pause
+\item We associate to \textcolor{beamer@mathtext}{$p \in S^2$}
+the type whose terms are tangent vectors at \textcolor{beamer@mathtext}{$p$}.
+Then this is like a type family.      
+\pause
+\item \textcolor{beamer@mathtext}{$\prod$}-type corresponds to vector fields (sections).
+\pause
+\item \textcolor{beamer@mathtext}{$\sum$}-type corresponds to the union of the
+tangent spaces (i.e. total space).
+\end{enumerate}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
