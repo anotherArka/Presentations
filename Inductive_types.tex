@@ -336,7 +336,14 @@ Given a type $A$ and universe $\U$ a function $f : A \to \U$ is called a
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}\label{frame : dependent function type}
 \frametitle{Dependent Function/Product Type}
-Add that they are also called dependent product type and say the reason
+
+Given a type family \textcolor{beamer@mathtext}{$P : A \to \U $} we can form:
+The \textcolor{beamer@deepblue}{dependent function/product type}
+\textcolor{beamer@mathtext}{$\prod_{a : A} P(a)$}.\smallskip
+
+\pause
+This corresponds to the \textcolor{beamer@mathtext}{$\forall$} quantifier.
+
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -346,5 +353,28 @@ Add that they are also called dependent product type and say the reason
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}\label{frame : equality type}
+\frametitle{Equality Type}
+It is an indexed inductive type
+\textcolor{beamer@mathtext}{\[ Eq : \prod_{A : \U} (A \to A \to \U) \]}
+$Eq(A,a,b)$ is also written as \textcolor{beamer@mathtext}{$x =_A y$},
+or as \textcolor{beamer@mathtext}{$x = y$} when the value of $A$ is clear from the context.
+\pause
+\begin{block}{Generator}
+\textcolor{beamer@mathtext}{\[ refl : \prod_{x : A} (x =_A x) \]}
+\end{block}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}\label{frame : equality type recursor}
+\frametitle{Equality Type}
+Let's see definitions from the HoTT book.
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 \end{document}
 
