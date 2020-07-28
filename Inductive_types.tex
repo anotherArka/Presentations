@@ -45,6 +45,7 @@
 
 
 \newcommand{\N}{\mathbb{N}}
+\newcommand{\tree}{\mathcal{BT}}
 
 \mode
 <all>
@@ -73,9 +74,11 @@ In addition to judgements of the form $a : A$, we now have a new kind of judgeme
 \begin{frame}\label{frame : gen of Nat}
 \frametitle{The Type $\mathbb{N}$}
 
+
 \begin{block}{Generators}
+\textcolor{beamer@mathtext}{
 \[ Z : \N \]
-\[ succ : \N \to \N \]
+\[ succ : \N \to \N \]}
 \end{block}
 \end{frame}
 
@@ -84,9 +87,10 @@ In addition to judgements of the form $a : A$, we now have a new kind of judgeme
 \frametitle{The Type $\mathbb{N}$}
 
 \begin{block}{Recursor}
-\[ rec_{\N,C} : C \to (\N \to C \to C) \to (\N \to C) \]
-\[ rec_{\N,C}(c_0,c_s,Z) \equiv c_0 \]
-\[ rec_{\N,C}(c_0,c_s,(succ(n))) \equiv c_s(n, rec_{\N,C}(c_0,c_s,n)) \]
+\textcolor{beamer@mathtext}{
+\[ rec_{\N}^C : C \to (\N \to C \to C) \to (\N \to C) \]
+\[ rec_{\N}^C (c_0,c_s,Z) :\equiv c_0 \]
+\[ rec_{\N}^C (c_0,c_s,(succ(n))) :\equiv c_s(n, rec_{\N}^C(c_0,c_s,n)) \]}
 \end{block}
 \end{frame}
 
@@ -95,8 +99,9 @@ In addition to judgements of the form $a : A$, we now have a new kind of judgeme
 \frametitle{Co-Product of Types}
 
 \begin{block}{Generators}
+\textcolor{beamer@mathtext}{
 \[ inl : A \to (A + B) \]
-\[ inr : B \to (A + B) \]
+\[ inr : B \to (A + B) \]}
 \end{block}
 \end{frame}
 
@@ -105,13 +110,75 @@ In addition to judgements of the form $a : A$, we now have a new kind of judgeme
 \frametitle{Co-Product of Types}
 
 \begin{block}{Recursor}
-\[ rec_{A+B,C} : (A \to C) \to (B \to C) \to ((A + B) \to C) \]
-\[ rec_{A+B,C}(f,g,inl(a)) \equiv f(a) \]
-\[ rec_{A+B,C}(f,g,inr(b)) \equiv g(b) \]
+\textcolor{beamer@mathtext}{
+\[ rec_{A+B}^C : (A \to C) \to (B \to C) \to ((A + B) \to C) \]
+\[ rec_{A+B}^C(f,g,inl(a)) :\equiv f(a) \]
+\[ rec_{A+B}^C(f,g,inr(b)) :\equiv g(b) \]}
 \end{block}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}\label{frame : product type}
+\frametitle{Product of Types}
+
+\begin{block}{Generator}
+\textcolor{beamer@mathtext}{
+\[ (\_,\_) : A \to B \to (A \times B) \]}
+\end{block}
+\pause
+\begin{block}{Recursor}
+\textcolor{beamer@mathtext}{
+\[ rec_{A \times B}^C : (A \to B \to C) \to ((A \times B) \to C) \]
+\[ rec_{A \times B}^C(f,(a,b)) :\equiv f(a)(b) \]}
+\end{block}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}\label{frame : projections}
+\frametitle{Product of Types}
+
+\begin{block}{Projections}
+\textcolor{beamer@mathtext}{
+\[ \pi_1 :\equiv rec_{A \times B}^A (\lambda a. \lambda b. a) : (A \times B) \to A\]
+\[ \pi_2 :\equiv rec_{A \times B}^B (\lambda a. \lambda b. b) : (A \times B) \to B\]}
+\end{block}
+
+\pause
+\begin{block}{}
+Note that $\pi_1((a,b)) \equiv a$ and $\pi_2((a,b)) \equiv b$
+follows from the definition of the recursor.
+\end{block}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}\label{frame : gen of tree}
+\frametitle{The Type of Binary Trees}
+
+\begin{block}{Generators}
+\textcolor{beamer@mathtext}{
+\[ leaf : A \to \tree(A,B) \]
+\[ node : B \to \tree(A,B) \to \tree(A,B) \to \tree(A,B) \]}
+\end{block}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}\label{frame : rec of tree}
+\frametitle{The Type of Binary Trees}
+
+\begin{block}{Recursor}
+$ $\\
+\pause
+\begin{huge}
+Homework!!
+\end{huge}
+
+\end{block}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \end{document}
 
