@@ -8,6 +8,7 @@
 \usepackage{pifont}
 %\tikzset{commutative diagrams/arrow style=math font}
 
+
 % Beamer commands
 \title{Inductive Types}
 \date{}
@@ -47,6 +48,7 @@
 
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\tree}{\mathcal{BT}}
+\newcommand{\U}{\mathcal{U}}
 
 \mode
 <all>
@@ -294,15 +296,55 @@ are NOT provable in propositions as types interpretation.
 \begin{frame}\label{frame : missing pieces}
 \frametitle{Missing Pieces}
 \begin{enumerate}
-\item Quantifiers
+\item Quantifiers(first order and higher order)
 \item Equality
 \end{enumerate}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}\label{frame : }
+\section{Dependent Types}
+\begin{frame}\label{frame : dependent types}
+\frametitle{Dependent Types}
+
+We will extend type theory such that: 
+\begin{enumerate}
+\item Types can depend on terms.
+\item Types can be terms themselves.
+\end{enumerate}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}\label{frame : universes}
+
+\frametitle{Universes}
+\pause
+To consider types are terms we need types of types. These special types
+whose terms are types are called \textcolor{beamer@mathtext}{universes}.
+We consider a cumulative sequence of universes,
+\textcolor{beamer@mathtext}{
+\[ \U_0 : \U_1 : \U_2 :\dots \]}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}\label{frame : universes and type families}
+\frametitle{Type Families}
+Given a type $A$ and universe $\U$ a function $f : A \to \U$ is called a
+\textcolor{beamer@mathtext}{type family}.
 
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}\label{frame : dependent function type}
+\frametitle{Dependent Function/Product Type}
+Add that they are also called dependent product type and say the reason
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}\label{frame : dependent sum type}
+\frametitle{Dependent Sum Type}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{document}
 
